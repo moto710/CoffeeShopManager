@@ -5,6 +5,7 @@ import product.ProductManagement;
 import product.view.ProductTemplate;
 
 import java.util.Date;
+import java.util.List;
 
 public class AddProductView extends ProductTemplate {
     public AddProductView(){
@@ -12,6 +13,7 @@ public class AddProductView extends ProductTemplate {
     }
     @Override
     protected void showBody() {
+        List<Product> products = productManagement.findAll();
         double inventory = 0;
         int entryPrice = 0;
         boolean flag = false;
@@ -59,6 +61,6 @@ public class AddProductView extends ProductTemplate {
         Product newProduct = new Product(name, inventory, unit, entryPrice, supplier);
         ProductManagement.addProduct(newProduct);
 
-        showProduct(productManagement.getProductList());
+        showProduct(products);
     }
 }

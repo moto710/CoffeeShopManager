@@ -2,12 +2,6 @@ package product.view.functionview;
 
 import product.Product;
 import product.view.ProductTemplate;
-import utils.ReadWriteFile;
-
-import java.util.Scanner;
-
-import static enums.FilePath.FOOD_MENU_PATH;
-import static product.ProductManagement.renderProduct;
 
 public class RemoveProductView extends ProductTemplate {
     public RemoveProductView() {

@@ -3,7 +3,6 @@ package product.view.functionview;
 import product.Product;
 import product.view.ProductTemplate;
 
-import java.util.Date;
 
 public class EditProductView extends ProductTemplate {
     public EditProductView(){
@@ -13,11 +12,12 @@ public class EditProductView extends ProductTemplate {
     protected void showBody() {
         boolean flag = false;
         Product needEdit = new Product();
+        int id = 0;
 
         do {
             try{
-                System.out.println("Enter product ID to edit:");
-                int id = Integer.parseInt(scanner.nextLine());
+                System.out.println("Enter product's ID to edit:");
+                id = Integer.parseInt(scanner.nextLine());
 
                 needEdit = productManagement.searchId(id);
                 if (needEdit == null) {
@@ -44,17 +44,14 @@ public class EditProductView extends ProductTemplate {
                     case 1:
                         System.out.println("Enter new product's name");
                         String name = scanner.nextLine();
-                        needEdit.setName(name);
-                        needEdit.setDateUpdate(new Date());
+                        productManagement.editProductName(id, name);
                         break;
                     case 2:
                         do {
                             try {
                                 System.out.println("Enter new product's inventory:");
-                                needEdit.setInventory(Double.parseDouble(scanner.nextLine()));
-                                needEdit.setDateUpdate(new Date());
+                                productManagement.editProductInventory(id, Double.parseDouble(scanner.nextLine()));
                                 flag = false;
-
                             } catch (Exception e) {
                                 System.err.println("You must enter a number!");
                                 flag = true;
@@ -65,9 +62,8 @@ public class EditProductView extends ProductTemplate {
                     case 3:
                         do {
                             try {
-                                System.out.println("Enter new product's entry price:");
-                                needEdit.setPrice(Integer.parseInt(scanner.nextLine()));
-                                needEdit.setDateUpdate(new Date());
+                                System.out.println("Enter new product's price:");
+                                productManagement.editProductPrice(id,Integer.parseInt(scanner.nextLine()));
                                 flag = false;
                                 break;
                             } catch (NumberFormatException numberFormatException) {
@@ -79,13 +75,11 @@ public class EditProductView extends ProductTemplate {
                         break;
                     case 4:
                         System.out.println("Enter new product's unit:");
-                        needEdit.setUnit(scanner.nextLine());
-                        needEdit.setDateUpdate(new Date());
+                        productManagement.editProductUnit(id, scanner.nextLine());
                         break;
                     case 5:
                         System.out.println("Enter new product's supplier:");
-                        needEdit.setSupplier(scanner.nextLine());
-                        needEdit.setDateUpdate(new Date());
+                        productManagement.editProductSupplier(id, scanner.nextLine());
                         break;
                     case 0:
                         System.out.println("Exit!");
@@ -103,13 +97,13 @@ public class EditProductView extends ProductTemplate {
             }
         } while (flag);
 
-        showProduct(productManagement.getProductList());
+        showProduct(productManagement.products());
     }
     public void menuEdit() {
         System.out.println("What part of product do you want to edit?");
         System.out.println("1. Name:");
         System.out.println("2. Inventory:");
-        System.out.println("3. Entry Price:");
+        System.out.println("3. Price:");
         System.out.println("4. Unit");
         System.out.println("5. Supplier:");
     }

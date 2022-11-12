@@ -1,19 +1,13 @@
 package order;
 
-import product.Product;
-import product.ProductManagement;
-import utils.ReadWriteFile;
-import utils.InstantUtils;
-import utils.OrderValidateUltils;
+import product.*;
+import utils.*;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
-import static enums.FilePath.FOOD_MENU_PATH;
+import static enums.FilePath.PRODUCT_LIST_PATH;
 import static enums.FilePath.ORDER_ITEM_PATH;
 
 
@@ -57,16 +51,16 @@ public class OrderItemManager {
             addOrderItem();
             return;
         }
-        int quantity = OrderValidateUltils.inputInventory();
+        double quantity = OrderValidateUltils.inputInventory();
 
         int countQuantity = 0;
         for (Product dish : foods) {
-            int tampQuantity = dish.getInventory();
+            double tampQuantity = dish.getInventory();
             Long tamp = dish.getId();
             if (tamp.equals(id) && tampQuantity >= quantity) {
                 total = dish.getPrice() * quantity;
                 dish.setInventory(dish.getInventory() - quantity);
-                ReadWriteFile.write(FOOD_MENU_PATH.getPath(), foods);
+                ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), foods);
                 countQuantity++;
             }
         }
@@ -75,7 +69,7 @@ public class OrderItemManager {
             addOrderItem();
             return;
         }
-        OrderItem newOrder = new OrderItem(id, nameFood, price, quantity, total);
+        OrderItem newOrder = new OrderItem(id, nameFood, price, (int) quantity, total);
         orderItems.add(newOrder);
         ReadWriteFile.write(ORDER_ITEM_PATH.getPath(), orderItems);
         System.out.println("Order thành công!");
@@ -136,17 +130,17 @@ public class OrderItemManager {
                 price = orderItem.getPrice();
                 nameFood = orderItem.getNameFood();
                 count++;
-                int quantityUpdate = OrderValidateUltils.inputInventory();
+                double quantityUpdate = OrderValidateUltils.inputInventory();
                 int countQuantity = 0;
                 if (orderItem.getId().equals(id))
-                    orderItem.setQuantity(orderItem.getQuantity() + quantityUpdate);
+                    orderItem.setQuantity((int) (orderItem.getQuantity() + quantityUpdate));
                 total = orderItem.getPrice() * orderItem.getQuantity();
                 for (Product dish : foods) {
-                    int tampQuantity = dish.getInventory();
+                    double tampQuantity = dish.getInventory();
                     Long tampid = dish.getId();
                     if (tampid.equals(id) && tampQuantity >= quantityUpdate) {
                         dish.setInventory(dish.getInventory() - quantityUpdate);
-                        ReadWriteFile.write(FOOD_MENU_PATH.getPath(), foods);
+                        ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), foods);
                         countQuantity++;
                     }
                 }
@@ -178,15 +172,15 @@ public class OrderItemManager {
             updateOrderItem();
             return;
         }
-        int quantity = OrderValidateUltils.inputInventory();
+        double quantity = OrderValidateUltils.inputInventory();
         int countQuantity = 0;
         for (Product dish : foods) {
-            int tampQuantity = dish.getInventory();
+            double tampQuantity = dish.getInventory();
             Long tampid = dish.getId();
             if (tampid.equals(id) && tampQuantity >= quantity) {
                 total = dish.getPrice() * quantity;
                 dish.setInventory(dish.getInventory() - quantity);
-                ReadWriteFile.write(FOOD_MENU_PATH.getPath(), foods);
+                ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), foods);
                 countQuantity++;
             }
 
@@ -196,7 +190,7 @@ public class OrderItemManager {
             updateOrderItem();
             return;
         }
-        OrderItem newOrder = new OrderItem(id, nameFood, price, quantity, total);
+        OrderItem newOrder = new OrderItem(id, nameFood, price, (int) quantity, total);
         orderItems.add(newOrder);
         ReadWriteFile.write(ORDER_ITEM_PATH.getPath(), orderItems);
         renderOrderItem();
@@ -256,7 +250,7 @@ public class OrderItemManager {
                     Long tampOldQuantity = dish.getId();
                     if (tampOldQuantity.equals(id)) {
                         dish.setInventory(dish.getInventory() + orderItem.getQuantity());
-                        ReadWriteFile.write(FOOD_MENU_PATH.getPath(), foods);
+                        ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), foods);
                     }
                 }
             }
@@ -282,17 +276,17 @@ public class OrderItemManager {
                         price = orderItemEdit.getPrice();
                         name = orderItemEdit.getNameFood();
                         count++;
-                        int quantityUpdate = OrderValidateUltils.inputInventory();
+                        double quantityUpdate = OrderValidateUltils.inputInventory();
                         int countQuantity = 0;
                         if (orderItemEdit.getId().equals(idEdit))
-                            orderItemEdit.setQuantity(orderItemEdit.getQuantity() + quantityUpdate);
+                            orderItemEdit.setQuantity((int) (orderItemEdit.getQuantity() + quantityUpdate));
                         total = orderItemEdit.getPrice() * orderItemEdit.getQuantity();
                         for (Product dish : foods) {
-                            int tampQuantity = dish.getInventory();
+                            double tampQuantity = dish.getInventory();
                             Long tampid = dish.getId();
                             if (tampid.equals(id) && tampQuantity >= quantityUpdate) {
                                 dish.setInventory(dish.getInventory() - quantityUpdate);
-                                ReadWriteFile.write(FOOD_MENU_PATH.getPath(), foods);
+                                ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), foods);
                                 countQuantity++;
                             }
                         }
@@ -319,13 +313,13 @@ public class OrderItemManager {
                         name = dish.getName();
                     }
                 }
-                quantity = OrderValidateUltils.inputInventory();
+                quantity = (int) OrderValidateUltils.inputInventory();
                 for (Product dish : foods) {
                     Long tamp1 = dish.getId();
                     if (tamp1.equals(idEdit)) {
                         total = dish.getPrice() * quantity;
                         dish.setInventory(dish.getInventory() - quantity);
-                        ReadWriteFile.write(FOOD_MENU_PATH.getPath(), foods);
+                        ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), foods);
                     }
                 }
                 orderItem.setId(idEdit);
@@ -370,7 +364,7 @@ public class OrderItemManager {
                             Long tampOldDish = dish.getId();
                             if(tampOldDish.equals(id)){
                                 dish.setInventory(dish.getInventory() + orderItem.getQuantity());
-                                ReadWriteFile.write(FOOD_MENU_PATH.getPath(), foods);
+                                ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), foods);
                             }
                         }
                         orderItemList.remove(orderItem);

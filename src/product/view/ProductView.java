@@ -10,7 +10,7 @@ public class ProductView extends ProductTemplate{
     @Override
     protected void showBody() {
         boolean flag = true;
-        showProduct(productManagement.getProductList());
+        showProduct(productManagement.products());
 
         do {
             menuProductView();
@@ -20,7 +20,7 @@ public class ProductView extends ProductTemplate{
 
                 switch (choice) {
                     case 1:
-                        showProduct(productManagement.getProductList());
+                        showProduct(productManagement.products());
                         break;
                     case 2:
                         AddProductView addProductView = new AddProductView();

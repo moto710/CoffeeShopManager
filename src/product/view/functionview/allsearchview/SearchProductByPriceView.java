@@ -16,10 +16,10 @@ public class SearchProductByPriceView extends ProductTemplate {
                 System.out.println("Enter product's entry price to search:");
                 entryPrice = Integer.parseInt(scanner.nextLine());
 
-                if (productManagement.searchEntryPrice(entryPrice) == null) {
+                if (productManagement.searchPrice(entryPrice) == null) {
                     System.out.printf("There is no product with entry price = %s \n", entryPrice);
                 } else {
-                    showProduct(productManagement.searchEntryPrice(entryPrice));
+                    showProduct(productManagement.searchPrice(entryPrice));
                 }
             } catch (NumberFormatException numberFormatException) {
                 System.err.println("Invalid input, try again!");

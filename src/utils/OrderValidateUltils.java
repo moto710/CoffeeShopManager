@@ -27,9 +27,9 @@ public class OrderValidateUltils {
             if (!ValidateUltils.isNameValid(foodName)) {
                 System.out.println("Tên chưa đúng định dạng vui lòng nhập lại!!");
             }
-            if (ProductManagement.checkNameInList(foodName)) {
+            if (ProductManagement.isNameExist(foodName)) {
                 System.out.println("Tên món ăn đã có, vui lòng nhập lại !!");
-                ProductManagement.addProduct();
+//                ProductManagement.addProduct();
                 break;
             }
         } while (!ValidateUltils.isNameValid(foodName));

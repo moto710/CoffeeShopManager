@@ -3,7 +3,7 @@ package product.view.functionview.allsortview;
 import product.sort.ComparatorById;
 import product.view.ProductTemplate;
 
-import static product.ProductManagement.printProduct;
+import java.util.Collections;
 
 
 public class SortProductByIdAscView extends ProductTemplate {
@@ -13,7 +13,7 @@ public class SortProductByIdAscView extends ProductTemplate {
     @Override
     protected void showBody() {
         comparator = new ComparatorById();
-
-        printProduct(productManagement.sortProduct(comparator));
+        Collections.sort(productManagement.products(), comparator);
+        showProduct(productManagement.products());
     }
 }

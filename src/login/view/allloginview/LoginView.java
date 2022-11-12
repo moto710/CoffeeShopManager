@@ -1,9 +1,6 @@
 package login.view.allloginview;
 
-import login.check.CheckLogin;
-import login.check.PasswordFogot;
 import login.view.LoginTemplate;
-import user.CreateUserManager;
 
 public class LoginView extends LoginTemplate {
     public LoginView() {
@@ -19,7 +16,7 @@ public class LoginView extends LoginTemplate {
 
             switch (choice) {
                 case 1: //login
-                    CheckLogin checkLogin = new CheckLogin();
+                    CheckLoginView checkLogin = new CheckLoginView();
                     break;
                 case 2: //create account
                     break;

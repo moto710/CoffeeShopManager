@@ -1,6 +1,6 @@
 package utils;
 
-import user.UserManager;
+import user.UserManagement;
 
 import java.util.Scanner;
 
@@ -15,9 +15,9 @@ public class UserValidateUltils {
             if (!ValidateUltils.isUsernameValid(userName)) {
                 System.out.println("Tên không đúng quy định vui lòng nhập lại !!");
             }
-            if (UserManager.checkUserNameInTheList(userName)) {
+            if (UserManagement.isUserNameInList(userName)) {
                 System.out.println("Username đã có, vui lòng nhập lại !!");
-                UserManager.addUser();
+                UserManagement.addUser();
                 break;
             }
         }

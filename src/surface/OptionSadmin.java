@@ -2,7 +2,7 @@ package surface;
 
 import product.ProductManagement;
 import order.*;
-import user.UserManager;
+import user.UserManagement;
 import utils.AddOrderItemInAllOrder;
 import utils.BackMenuOrExit;
 import utils.TotalPrice;
@@ -31,7 +31,7 @@ public class OptionSadmin {
             System.out.println("Vui lòng nhập lựa chọn của bạn :");
             System.out.printf("︻┳═一 :");
             choice = Integer.parseInt(scanner.nextLine());
-            RenderList renderList = new RenderList();
+            RenderListView renderList = new RenderListView();
             switch (choice) {
                 case 1:
                     renderList.renderMenuManager();
@@ -83,13 +83,13 @@ public class OptionSadmin {
                     break;
                 case 2:
                     renderList.renderUserManager();
-                    UserManager user = new UserManager();
+                    UserManagement user = new UserManagement();
                     System.out.println("Vui lòng nhập lựa chọn của bạn: ");
                     System.out.printf("︻┳═一 :");
                     choice = Integer.parseInt(scanner.nextLine());
                     switch (choice) {
                         case 1:
-                            UserManager.addUser();
+                            UserManagement.addUser();
                             backMeNuOrExit.BackMeNuOrExitSadmin();
                             break;
                         case 2:
@@ -97,11 +97,11 @@ public class OptionSadmin {
                             backMeNuOrExit.BackMeNuOrExitSadmin();
                             break;
                         case 3:
-                            UserManager.renderUser();
+                            UserManagement.renderUser();
                             backMeNuOrExit.BackMeNuOrExitSadmin();
                             break;
                         case 4:
-                            user.deleteUser();
+                            user.removeUser();
                             backMeNuOrExit.BackMeNuOrExitSadmin();
                             break;
                         case 5:

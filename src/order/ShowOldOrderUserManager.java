@@ -1,8 +1,8 @@
 package order;
 
 import utils.ReadWriteFile;
-import user.SaveUser;
-import user.SaveUserManager;
+import user.view.SaveUser;
+import user.view.SaveUserManager;
 import utils.InstantUtils;
 
 import java.io.BufferedReader;

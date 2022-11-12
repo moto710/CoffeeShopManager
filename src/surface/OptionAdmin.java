@@ -21,44 +21,44 @@ public class OptionAdmin extends LoginTemplate {
         boolean flag = false;
         do {
             menuAdmin();
-            RenderList renderList = new RenderList();
+            RenderListView renderList = new RenderListView();
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
                     renderList.renderMenuManager();
-                    ProductManagement foodManager = new ProductManagement();
+                    ProductManagement productManagement = new ProductManagement();
                     System.out.println("Vui lòng nhập lựa chọn của bạn: ");
                     System.out.printf("︻┳═一 :");
                     choice = Integer.parseInt(scanner.nextLine());
                     switch (choice) {
                         case 1:
-                            foodManager.renderProduct();
+                            productManagement.renderProduct();
                             backMenuOrExit.BackMeNuOrExitAdmin();
                             break;
 
                         case 2:
-                            foodManager.addProduct();
+                            productManagement.addProduct();
                             backMenuOrExit.BackMeNuOrExitAdmin();
                             break;
                         case 3:
-                            foodManager.removeProduct();
+                            productManagement.removeProduct();
                             backMenuOrExit.BackMeNuOrExitAdmin();
                             break;
                         case 4:
-                            foodManager.editProduct();
+                            productManagement.editProduct();
                             backMenuOrExit.BackMeNuOrExitAdmin();
 
                             break;
                         case 5:
-                            foodManager.searchName();
+                            productManagement.searchName();
                             backMenuOrExit.BackMeNuOrExitAdmin();
                             break;
                         case 6:
-                            foodManager.sortAscending();
+                            productManagement.sortAscending();
                             backMenuOrExit.BackMeNuOrExitAdmin();
                             break;
                         case 7:
-                            foodManager.sortDescending();
+                            productManagement.sortDescending();
                             backMenuOrExit.BackMeNuOrExitAdmin();
                             break;
                         case 0:

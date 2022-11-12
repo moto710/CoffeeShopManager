@@ -1,15 +1,15 @@
 package enums;
 
 public enum FilePath {
-    USER_PATH("CSModule2\\data\\User.csv"),
-    ORDER_PATH("CSModule2\\data\\Order.csv"),
-    ORDER_ITEM_PATH("CSModule2\\data\\OrderItem.csv"),
-    FOOD_MENU_PATH("CSModule2\\data\\FoodMenu.csv"),
-    ALL_ORDER_PATH("CSModule2\\data\\AllOrder.csv"),
-    CREATE_USER_PATH("CSModule2\\data\\CreateUser.csv"),
-    DATE_ORDER_PATH("CSModule2\\data\\DayOrder.csv"),
-    SAVE_USER_PATH("CSModule2\\data\\SaveUser.csv"),
-    OLD_ORDER_PATH("CSModule2\\data\\ShowOldOrder.csv");
+    USER_LIST_PATH("data\\User.csv"),
+    ORDER_PATH("data\\Order.csv"),
+    ORDER_ITEM_PATH("data\\OrderItem.csv"),
+    PRODUCT_LIST_PATH("data\\ProductList.csv"),
+    ALL_ORDER_PATH("data\\AllOrder.csv"),
+    CREATE_USER_PATH("data\\CreateUser.csv"),
+    DATE_ORDER_PATH("data\\DayOrder.csv"),
+    SAVE_USER_PATH("data\\SaveUser.csv"),
+    OLD_ORDER_PATH("data\\ShowOldOrder.csv");
     private String path;
 
     private FilePath(String path) {

@@ -1,16 +1,14 @@
 package product;
 
 import utils.InstantUtils;
-import utils.OrderValidateUltils;
 import utils.ReadWriteFile;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
 
-import static enums.FilePath.FOOD_MENU_PATH;
+import static enums.FilePath.PRODUCT_LIST_PATH;
 
 
 public class ProductManagement {
@@ -22,7 +20,7 @@ public class ProductManagement {
 
     }
 
-    public static List<Product> getProductList() {
+    public static List<Product> products() {
         return productList;
     }
 
@@ -32,43 +30,19 @@ public class ProductManagement {
 
     public static List<Product> findAll() {
         List<Product> productList = new ArrayList<>();
-        List<String> lines = ReadWriteFile.read(FOOD_MENU_PATH.getPath());
+        List<String> lines = ReadWriteFile.read(PRODUCT_LIST_PATH.getPath());
         for (String line : lines) {
             productList.add(Product.parseProduct(line));
         }
         return productList;
     }
 
-//    public boolean checkProductInList(Product product) {
-//        if (!productList.isEmpty()) {
-//            for (Product item : productList) {
-//                if (product == item)
-//                    return true;
-//            }
-//        }
-//        return false;
-//    }
-
-//    public static boolean checkNameInList(String name) {
-//        List<Product> products = findAll();
-//        if (!products.isEmpty()) {
-//            for (Product item : products) {
-//                String tamp = item.getName();
-//                if (tamp.equals(name))
-//                    return true;
-//            }
-//
-//        }
-//        return false;
-//    }
-
 
     public static void addProduct(Product product) {
-        List<Product> products = findAll();
         renderProduct();
-
+        List<Product> products = findAll();
         products.add(product);
-        ReadWriteFile.write(FOOD_MENU_PATH.getPath(), products);
+        ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), products);
         renderProduct();
     }
 
@@ -78,7 +52,7 @@ public class ProductManagement {
         BufferedReader br = null;
         try {
             String line;
-            br = new BufferedReader(new FileReader(FOOD_MENU_PATH.getPath()));
+            br = new BufferedReader(new FileReader(PRODUCT_LIST_PATH.getPath()));
             while ((line = br.readLine()) != null) {
                 printProduct(parseCsvLine(line));
             }
@@ -108,73 +82,78 @@ public class ProductManagement {
     }
 
     public static void printProduct(List<String> productList) {
-        System.out.printf("\n\t%-16s %-36s %-26s %-10s %s\n", productList.get(0), productList.get(1),InstantUtils.doubleToVND(Double.parseDouble(productList.get(2))) , productList.get(3));
+        System.out.printf("\n\t%-16s %-36s %-26s %-10s %s\n", productList.get(0), productList.get(1), InstantUtils.doubleToVND(Double.parseDouble(productList.get(2))), productList.get(3));
     }
 
-
-    public void editProduct() {
+    public void editProductName(long id, String name) {
         renderProduct();
         List<Product> products = findAll();
-
-        Scanner input = new Scanner(System.in);
-        System.out.println("Nhập y nếu muốn chỉnh sửa hoặc nhập b để quay lại menu chính: ");
-        String choice = input.nextLine();
-        switch (choice) {
-            case "y":
-                System.out.println("Nhập ID Muốn chỉnh sửa:  ");
-                Long id = Long.parseLong(input.nextLine());
-                int count = 0;
-                for (Product dish : products) {
-                    Long tamp = dish.getId();
-                    if (tamp.equals(id)) {
-//                        products.remove(dish);
-                        String name = OrderValidateUltils.inputFoodName();
-                        double price = OrderValidateUltils.inputPrice();
-                        double inventory = OrderValidateUltils.inputInventory();
-                        dish.setName(name);
-                        dish.setPrice(price);
-                        dish.setInventory(inventory);
-                        count++;
-                        ReadWriteFile.write(FOOD_MENU_PATH.getPath(), products);
-                        renderProduct();
-                        break;
-                    }
-                }
-                if (count == 0) {
-                    System.out.println("ID không tồn tại vui lòng nhập lại!");
-                    editProduct();
-                }
-                break;
-            case "b":
-                break;
-            default:
-                System.out.println("Vui Lòng Nhập Lại!");
-                editProduct();
-        }
+        Product temp = searchId(id);
+        temp.setName(name);
+        temp.setDateUpdate(new Date());
+        ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), products);
+        renderProduct();
     }
-
+    public void editProductInventory(long id, double inventory) {
+        renderProduct();
+        List<Product> products = findAll();
+        Product temp = searchId(id);
+        temp.setInventory(inventory);
+        temp.setDateUpdate(new Date());
+        ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), products);
+        renderProduct();
+    }
+    public void editProductUnit(long id, String unit) {
+        renderProduct();
+        List<Product> products = findAll();
+        Product temp = searchId(id);
+        temp.setUnit(unit);
+        temp.setDateUpdate(new Date());
+        ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), products);
+        renderProduct();
+    }
+    public void editProductPrice(long id, double price) {
+        renderProduct();
+        List<Product> products = findAll();
+        Product temp = searchId(id);
+        temp.setPrice(price);
+        temp.setDateUpdate(new Date());
+        ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), products);
+        renderProduct();
+    }
+    public void editProductSupplier(long id, String supplier) {
+        renderProduct();
+        List<Product> products = findAll();
+        Product temp = searchId(id);
+        temp.setSupplier(supplier);
+        temp.setDateUpdate(new Date());
+        ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), products);
+        renderProduct();
+    }
 
     public void removeProduct(long id) {
         renderProduct();
         List<Product> list = findAll();
-        for (int i = 0; i < productList.size(); i++) {
-            if (productList.get(i).getId() == id) {
-                productList.remove(i);
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getId() == id) {
+                list.remove(i);
                 break;
             }
         }
-        ReadWriteFile.write(FOOD_MENU_PATH.getPath(), list);
+        ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), list);
         renderProduct();
     }
+
     public static Product searchId(long id) {
+        List<Product> products = findAll();
         Product temp = new Product();
         int count = 0;
-        for (int i = 0; i < getProductList().size(); i++) {
-            if (getProductList().get(i).getId() == id) {
-                temp = getProductList().get(i);
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getId() == id) {
+                temp = products.get(i);
                 count++;
                 break;
-            } else if (count == 0 && i == getProductList().size() - 1){
+            } else if (count == 0 && i == products.size() - 1) {
                 temp = null;
             }
         }
@@ -182,26 +161,29 @@ public class ProductManagement {
     }
 
     public static List<Product> searchName(String name) {
+        List<Product> products = findAll();
         List<Product> sameName = new ArrayList<>();
         int count = 0;
-        for (int i = 0; i < productList.size(); i++) {
-            if (productList.get(i).getName().toUpperCase().contains(name.toUpperCase())) {
-                sameName.add(productList.get(i));
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getName().toUpperCase().contains(name.toUpperCase())) {
+                sameName.add(products.get(i));
                 count++;
-            } else if (count == 0 && i == productList.size() - 1) {
+            } else if (count == 0 && i == products.size() - 1) {
                 sameName = null;
             }
         }
         return sameName;
     }
+
     public static List<Product> searchInventory(double inventory) {
+        List<Product> products = findAll();
         List<Product> sameInventory = new ArrayList<>();
         int count = 0;
-        for (int i = 0; i < productList.size(); i++) {
-            if (productList.get(i).getInventory() == inventory) {
-                sameInventory.add(productList.get(i));
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getInventory() == inventory) {
+                sameInventory.add(products.get(i));
                 count++;
-            } else if (count == 0 && i == productList.size() - 1) {
+            } else if (count == 0 && i == products.size() - 1) {
                 sameInventory = null;
             }
         }
@@ -209,15 +191,16 @@ public class ProductManagement {
     }
 
 
-    public static List<Product> searchEntryPrice(int entryPrice) {
+    public static List<Product> searchPrice(int price) {
+        List<Product> products = findAll();
         List<Product> sameEntryPrice = new ArrayList<>();
         int count = 0;
 
-        for (int i = 0; i < productList.size(); i++) {
-            if (productList.get(i).getPrice() == entryPrice) {
-                sameEntryPrice.add(productList.get(i));
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getPrice() == price) {
+                sameEntryPrice.add(products.get(i));
                 count++;
-            } else if (count == 0 && i == productList.size() - 1) {
+            } else if (count == 0 && i == products.size() - 1) {
                 sameEntryPrice = null;
             }
         }
@@ -226,14 +209,15 @@ public class ProductManagement {
 
 
     public static List<Product> searchUnit(String unit) {
+        List<Product> products = findAll();
         List<Product> sameUnit = new ArrayList<>();
         int count = 0;
 
-        for (int i = 0; i < productList.size(); i++) {
-            if (productList.get(i).getUnit().toUpperCase().contains(unit.toUpperCase())) {
-                sameUnit.add(productList.get(i));
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getUnit().toUpperCase().contains(unit.toUpperCase())) {
+                sameUnit.add(products.get(i));
                 count++;
-            } else if (count == 0 && i == productList.size() - 1) {
+            } else if (count == 0 && i == products.size() - 1) {
                 sameUnit = null;
             }
         }
@@ -242,17 +226,30 @@ public class ProductManagement {
 
 
     public static List<Product> searchSupplier(String supplier) {
+        List<Product> products = findAll();
         List<Product> sameSupplier = new ArrayList<>();
-        for (Product product : productList) {
-            if (product.getSupplier().toUpperCase().contains(supplier.toUpperCase())) {
+        for (Product product : products) {
+            if (product.getSupplier().equalsIgnoreCase(supplier)) {
                 sameSupplier.add(product);
             }
         }
         return sameSupplier;
     }
 
-    public void sortProduct(Comparator<Product> comparator) {
-        productList.sort(comparator);
+    public static boolean isNameExist(String name) {
+        List<Product> products = findAll();
+        boolean flag = false;
+        int count = 0;
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getName().contains(name)) {
+                flag = true;
+                count++;
+            } else if (i == products.size() - 1 && count == 0) {
+                flag = false;
+            }
+        }
+
+        return flag;
     }
 }
 
