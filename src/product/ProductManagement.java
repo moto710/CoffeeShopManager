@@ -1,6 +1,5 @@
 package product;
 
-import utils.InstantUtils;
 import utils.ReadWriteFile;
 
 import java.io.*;
@@ -37,19 +36,7 @@ public class ProductManagement {
         }
         return productList;
     }
-
-
-    public static void addProduct(Product product) {
-        renderProduct();
-        List<Product> products = findAll();
-        products.add(product);
-        ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), products);
-        renderProduct();
-    }
-
     public static void renderProduct() {
-//        System.out.println("Show product list");
-//        System.out.printf("\n\t%s, %s\n", "id", "name"); //, %s, %s, %s, %s, %s, %s
         BufferedReader br = null;
         try {
             String line;
@@ -85,54 +72,69 @@ public class ProductManagement {
                 productList.get(3), productList.get(4), productList.get(5), productList.get(6), productList.get(7));
     }
 
-    public void editProductName(long id, String name) {
-        renderProduct();
+    public static void addProduct(Product product) {
         List<Product> products = findAll();
-        Product temp = searchId(id);
-        temp.setName(name);
-        temp.setDateUpdate(formatDateToString(new Date()));
+        products.add(product);
         ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), products);
-        renderProduct();
+    }
+
+    public static void editProductName(long id, String name) {
+        List<Product> products = findAll();
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getId() == id) {
+                products.get(i).setName(name);
+                products.get(i).setDateUpdate(formatDateToString(new Date()));
+                break;
+            }
+        }
+        ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), products);
     }
     public void editProductInventory(long id, double inventory) {
-        renderProduct();
         List<Product> products = findAll();
-        Product temp = searchId(id);
-        temp.setInventory(inventory);
-        temp.setDateUpdate(formatDateToString(new Date()));
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getId() == id) {
+                products.get(i).setInventory(inventory);
+                products.get(i).setDateUpdate(formatDateToString(new Date()));
+                break;
+            }
+        }
         ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), products);
-        renderProduct();
     }
     public void editProductUnit(long id, String unit) {
-        renderProduct();
         List<Product> products = findAll();
-        Product temp = searchId(id);
-        temp.setUnit(unit);
-        temp.setDateUpdate(formatDateToString(new Date()));
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getId() == id) {
+                products.get(i).setUnit(unit);
+                products.get(i).setDateUpdate(formatDateToString(new Date()));
+                break;
+            }
+        }
         ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), products);
-        renderProduct();
     }
     public void editProductPrice(long id, double price) {
-        renderProduct();
         List<Product> products = findAll();
-        Product temp = searchId(id);
-        temp.setPrice(price);
-        temp.setDateUpdate(formatDateToString(new Date()));
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getId() == id) {
+                products.get(i).setPrice(price);
+                products.get(i).setDateUpdate(formatDateToString(new Date()));
+                break;
+            }
+        }
         ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), products);
-        renderProduct();
     }
     public void editProductSupplier(long id, String supplier) {
-        renderProduct();
         List<Product> products = findAll();
-        Product temp = searchId(id);
-        temp.setSupplier(supplier);
-        temp.setDateUpdate(formatDateToString(new Date()));
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getId() == id) {
+                products.get(i).setSupplier(supplier);
+                products.get(i).setDateUpdate(formatDateToString(new Date()));
+                break;
+            }
+        }
         ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), products);
-        renderProduct();
     }
 
     public void removeProduct(long id) {
-        renderProduct();
         List<Product> list = findAll();
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getId() == id) {
@@ -141,20 +143,15 @@ public class ProductManagement {
             }
         }
         ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), list);
-        renderProduct();
     }
 
     public static Product searchId(long id) {
         List<Product> products = findAll();
-        Product temp = new Product();
+        Product temp = null;
         for (int i = 0; i < products.size(); i++) {
-            int count = 0;
             if (products.get(i).getId() == id) {
                 temp = products.get(i);
-                count++;
                 break;
-            } else if (count == 0 && i == products.size() - 1) {
-                temp = null;
             }
         }
         return temp;

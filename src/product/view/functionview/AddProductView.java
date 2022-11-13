@@ -1,10 +1,8 @@
 package product.view.functionview;
 
 import product.Product;
-import product.ProductManagement;
 import product.view.ProductTemplate;
 
-import java.util.Date;
 import java.util.List;
 
 public class AddProductView extends ProductTemplate {
@@ -13,7 +11,7 @@ public class AddProductView extends ProductTemplate {
     }
     @Override
     protected void showBody() {
-        List<Product> products = productManagement.findAll();
+//        List<Product> products = productManagement.findAll();
         double inventory = 0;
         int entryPrice = 0;
         boolean flag = false;
@@ -35,9 +33,8 @@ public class AddProductView extends ProductTemplate {
             }
         } while (flag);
 
-        String unit;
         System.out.println("Enter new product's unit:");
-        unit = scanner.nextLine();
+        String unit = scanner.nextLine();
 
         do {
             try {
@@ -58,7 +55,5 @@ public class AddProductView extends ProductTemplate {
         Product newProduct = new Product(name, inventory, unit, entryPrice, supplier);
         productManagement.addProduct(newProduct);
         System.out.println(newProduct);
-
-//        showProduct(products);
     }
 }

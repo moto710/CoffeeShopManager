@@ -21,7 +21,7 @@ public class UserView extends UserTemplate{
 
                 switch (choice) {
                     case 1:
-                        showUser(userList);
+                        userManagement.renderUser();
                         break;
                     case 2:
                         CreateNewUserView createNewUserView = new CreateNewUserView();

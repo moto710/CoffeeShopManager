@@ -6,7 +6,7 @@ import java.util.Date;
 
 import static enums.RoleAccount.USER;
 import static enums.RoleAccount.parseRole;
-import static utils.DateUtils.parseStringToDate;
+import static utils.DateUtils.formatDateToString;
 
 public class User {
     private Long id;
@@ -17,8 +17,8 @@ public class User {
     private String email;
     private String address;
     private RoleAccount role;
-    private Date dateCreate;
-    private Date dateUpdate;
+    private String dateCreate;
+    private String dateUpdate;
 
     public User() {
     }
@@ -33,8 +33,8 @@ public class User {
         this.email = email;
         this.address = address;
         this.role = role;
-        this.dateCreate = new Date();
-        this.dateUpdate = new Date();
+        this.dateCreate = formatDateToString(new Date());
+        this.dateUpdate = formatDateToString(new Date());
     }
     public User(String userName, String password, String fullName, String phone, String email, String address) {
         this.id = System.currentTimeMillis() / 1000000;
@@ -44,8 +44,8 @@ public class User {
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.dateCreate = new Date();
-        this.dateUpdate = new Date();
+        this.dateCreate = formatDateToString(new Date());
+        this.dateUpdate = formatDateToString(new Date());
         this.role = USER;
     }
     public static User parseUser(String raw) {
@@ -59,8 +59,8 @@ public class User {
         user.email = fields[5];
         user.address = fields[6];
         user.role = parseRole(fields[7]);
-        user.dateCreate = parseStringToDate(fields[8]);
-        user.dateUpdate = parseStringToDate(fields[9]);
+        user.dateCreate = (fields[8]);
+        user.dateUpdate = (fields[9]);
         return user;
     }
 
@@ -123,15 +123,15 @@ public class User {
     public void setRoleAccount(RoleAccount role) {
         this.role = role;
     }
-    public Date getDateUpdate() {
+    public String getDateUpdate() {
         return dateUpdate;
     }
 
-    public void setDateUpdate(Date dateUpdate) {
+    public void setDateUpdate(String dateUpdate) {
         this.dateUpdate = dateUpdate;
     }
 
-    public Date getDateCreate() {
+    public String getDateCreate() {
         return dateCreate;
     }
 

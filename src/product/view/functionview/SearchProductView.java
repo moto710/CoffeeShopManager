@@ -12,7 +12,6 @@ public class SearchProductView extends ProductTemplate {
         boolean flag = true;
         do {
             menuSearchView();
-//            try {
             int choice = Integer.parseInt(scanner.nextLine());
 
             switch (choice) {
@@ -41,11 +40,6 @@ public class SearchProductView extends ProductTemplate {
                     System.out.println("Wrong input, enter again!");
                     break;
             }
-//            }catch(Exception e){
-//                System.out.println("Invalid! Please choose again!");
-//            }
-
-
         } while (flag);
     }
     protected void menuSearchView() {

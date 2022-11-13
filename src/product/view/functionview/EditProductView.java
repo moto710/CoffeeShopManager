@@ -13,8 +13,7 @@ public class EditProductView extends ProductTemplate {
     @Override
     protected void showBody() {
         boolean flag = false;
-        List<Product> products = productManagement.findAll();
-        Product needEdit = new Product();
+        Product needEdit;
         int id = 0;
 
         do {
@@ -47,7 +46,6 @@ public class EditProductView extends ProductTemplate {
                     case 1:
                         System.out.println("Enter new product's name");
                         String name = scanner.nextLine();
-                        products.
                         productManagement.editProductName(id, name);
                         break;
                     case 2:
@@ -96,13 +94,10 @@ public class EditProductView extends ProductTemplate {
                 }
             } catch (Exception e) {
                 System.err.println("Wrong input, try again, bae!");
-                e.printStackTrace();
                 flag = true;
                 scanner.reset();
             }
         } while (flag);
-
-        showProduct(products);
     }
     public void menuEdit() {
         System.out.println("What part of product do you want to edit?");
@@ -111,5 +106,6 @@ public class EditProductView extends ProductTemplate {
         System.out.println("3. Price:");
         System.out.println("4. Unit");
         System.out.println("5. Supplier:");
+        System.out.println("0. Exit!");
     }
 }

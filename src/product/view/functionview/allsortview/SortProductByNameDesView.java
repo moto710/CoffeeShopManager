@@ -1,9 +1,11 @@
 package product.view.functionview.allsortview;
 
+import product.Product;
 import product.sort.ComparatorByName;
 import product.view.ProductTemplate;
 
 import java.util.Collections;
+import java.util.List;
 
 public class SortProductByNameDesView extends ProductTemplate {
     public SortProductByNameDesView(){
@@ -12,8 +14,9 @@ public class SortProductByNameDesView extends ProductTemplate {
     @Override
     protected void showBody() {
         comparator = new ComparatorByName();
-        Collections.sort(productManagement.products(), comparator);
-        Collections.reverse(productManagement.products());
-        showProduct(productManagement.products());
+        List<Product> products = productManagement.findAll();
+        Collections.sort(products, comparator);
+        Collections.reverse(products);
+        showProduct(products);
     }
 }

@@ -1,10 +1,10 @@
 package product.view;
 
-
 import product.Product;
 import product.view.functionview.*;
 
 import java.util.List;
+
 
 public class ProductView extends ProductTemplate{
     public ProductView(){
@@ -13,7 +13,7 @@ public class ProductView extends ProductTemplate{
     @Override
     protected void showBody() {
         boolean flag = true;
-        List<Product> products = productManagement.findAll();
+//        List<Product> products = productManagement.findAll();
 
         do {
             try {
@@ -22,7 +22,7 @@ public class ProductView extends ProductTemplate{
 
                 switch (choice) {
                     case 1:
-                        showProduct(products);
+                        productManagement.renderProduct();
                         break;
                     case 2:
                         AddProductView addProductView = new AddProductView();

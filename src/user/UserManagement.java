@@ -7,7 +7,7 @@ import java.io.*;
 import java.util.*;
 
 import static enums.FilePath.USER_LIST_PATH;
-import static utils.DateUtils.parseStringToDate;
+import static utils.DateUtils.formatDateToString;
 
 public class UserManagement {
     public static List<User> findAll() {
@@ -51,99 +51,94 @@ public class UserManagement {
     }
 
     public static void printUser(List<String> userList) {
-        System.out.printf("\n%-25s %-25s %-25s %-25s %-25s %-35s %-15s %-15s %-15s %s\n", userList.get(0),
-                userList.get(1), userList.get(2), userList.get(3), userList.get(4), userList.get(5), userList.get(6),
-                userList.get(7), parseStringToDate((userList.get(8))));
+        System.out.printf("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n", userList.get(0), userList.get(1), userList.get(2),
+                userList.get(3), userList.get(4), userList.get(5), userList.get(6), userList.get(7), userList.get(8),
+                userList.get(9));
     }
-    public static boolean isUserNameInList(String userName) {
-        List<User> users = findAll();
-        boolean flag = false;
-        int count = 0;
-        for (int i = 0; i < users.size(); i++) {
-            if (users.get(i).getUserName().equals(userName)) {
-                flag = true;
-                count++;
-                break;
-            } else if (count == 0 && i == users.size() - 1) {
-                flag = false;
-            }
-        }
-        return flag;
-    }
-
     public static void addUser(User user) {
-        renderUser();
         List<User> users = findAll();
         users.add(user);
         ReadWriteFile.write(USER_LIST_PATH.getPath(), users);
-        renderUser();
     }
     public void editUserUserName(long id, String userName) {
-        renderUser();
         List<User> users = findAll();
-        User temp = searchId(id);
-        temp.setUserName(userName);
-        temp.setDateUpdate(new Date());
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getId() == id) {
+                users.get(i).setUserName(userName);
+                users.get(i).setDateUpdate(formatDateToString(new Date()));
+                break;
+            }
+        }
         ReadWriteFile.write(USER_LIST_PATH.getPath(), users);
-        renderUser();
     }
     public void editUserPassword(long id, String password) {
-        renderUser();
         List<User> users = findAll();
-        User temp = searchId(id);
-        temp.setPassword(password);
-        temp.setDateUpdate(new Date());
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getId() == id) {
+                users.get(i).setPassword(password);
+                users.get(i).setDateUpdate(formatDateToString(new Date()));
+                break;
+            }
+        }
         ReadWriteFile.write(USER_LIST_PATH.getPath(), users);
-        renderUser();
     }
     public void editUserFullName(long id, String fullName) {
-        renderUser();
         List<User> users = findAll();
-        User temp = searchId(id);
-        temp.setFullName(fullName);
-        temp.setDateUpdate(new Date());
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getId() == id) {
+                users.get(i).setFullName(fullName);
+                users.get(i).setDateUpdate(formatDateToString(new Date()));
+                break;
+            }
+        }
         ReadWriteFile.write(USER_LIST_PATH.getPath(), users);
-        renderUser();
     }
     public void editUserPhone(long id, String phone) {
-        renderUser();
         List<User> users = findAll();
-        User temp = searchId(id);
-        temp.setPhone(phone);
-        temp.setDateUpdate(new Date());
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getId() == id) {
+                users.get(i).setPhone(phone);
+                users.get(i).setDateUpdate(formatDateToString(new Date()));
+                break;
+            }
+        }
         ReadWriteFile.write(USER_LIST_PATH.getPath(), users);
-        renderUser();
     }
     public void editUserEmail(long id, String email) {
-        renderUser();
         List<User> users = findAll();
-        User temp = searchId(id);
-        temp.setEmail(email);
-        temp.setDateUpdate(new Date());
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getId() == id) {
+                users.get(i).setEmail(email);
+                users.get(i).setDateUpdate(formatDateToString(new Date()));
+                break;
+            }
+        }
         ReadWriteFile.write(USER_LIST_PATH.getPath(), users);
-        renderUser();
     }
     public void editUserAddress(long id, String address) {
-        renderUser();
         List<User> users = findAll();
-        User temp = searchId(id);
-        temp.setAddress(address);
-        temp.setDateUpdate(new Date());
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getId() == id) {
+                users.get(i).setAddress(address);
+                users.get(i).setDateUpdate(formatDateToString(new Date()));
+                break;
+            }
+        }
         ReadWriteFile.write(USER_LIST_PATH.getPath(), users);
-        renderUser();
     }
     public void editUserRole(long id, RoleAccount role) {
-        renderUser();
         List<User> users = findAll();
-        User temp = searchId(id);
-        temp.setRoleAccount(role);
-        temp.setDateUpdate(new Date());
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getId() == id) {
+                users.get(i).setRoleAccount(role);
+                users.get(i).setDateUpdate(formatDateToString(new Date()));
+                break;
+            }
+        }
         ReadWriteFile.write(USER_LIST_PATH.getPath(), users);
-        renderUser();
     }
 
     public void removeUser(long id) {
-        renderUser();
         List<User> list = findAll();
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getId() == id) {
@@ -152,33 +147,25 @@ public class UserManagement {
             }
         }
         ReadWriteFile.write(USER_LIST_PATH.getPath(), list);
-        renderUser();
     }
     public static User searchId(long id) {
-        renderUser();
         List<User> users = findAll();
-        User temp = new User();
-        int count = 0;
+        User temp = null;
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).getId() == id) {
                 temp = users.get(i);
-                count++;
                 break;
-            } else if (count == 0 && i == users.size() - 1) {
-                temp = null;
             }
         }
         return temp;
     }
     public static User searchUserName(String userName) {
         List<User> users = findAll();
-        User temp = new User();
+        User temp = null;
         for (User user : users) {
             if (user.getUserName().equals(userName)) {
                 temp = user;
                 break;
-            }else {
-                temp = null;
             }
         }
         return temp;
@@ -216,26 +203,22 @@ public class UserManagement {
     }
     public static User searchPhone(String phone) {
         List<User> users = findAll();
-        User temp = new User();
+        User temp = null;
         for (User user : users) {
             if (user.getPhone().equals(phone)) {
                 temp = user;
                 break;
-            }else {
-                temp = null;
             }
         }
         return temp;
     }
     public static User searchEmail(String email) {
         List<User> users = findAll();
-        User temp = new User();
+        User temp = null;
         for (User user : users) {
             if (user.getEmail().equals(email)) {
                 temp = user;
                 break;
-            }else {
-                temp = null;
             }
         }
         return temp;
@@ -256,8 +239,6 @@ public class UserManagement {
         }
         return sameAddress;
     }
-
-
     public static List<User> searchRole(String role) {
         List<User> users = findAll();
         List<User> sameRole = new ArrayList<>();
