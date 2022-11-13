@@ -1,5 +1,6 @@
-package order;
+package order.orderitem;
 
+import order.orderitem.OrderItem;
 import product.*;
 import utils.*;
 

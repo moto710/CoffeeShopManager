@@ -1,8 +1,9 @@
-package order;
+package order.order;
 
+import order.order.Order;
 import utils.ReadWriteFile;
 import utils.InstantUtils;
-import utils.UserValidateUltils;
+//import utils.UserValidateUltils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -15,6 +16,7 @@ import java.util.Scanner;
 import static enums.FilePath.ORDER_PATH;
 
 public class OrderManager {
+    private Scanner scanner = new Scanner(System.in);
     public List<Order> orders;
 //    private final static String PATCH_ODER = "D:\\vscode\\module2\\CSModule2\\CSModule2\\data\\Order.csv";
 
@@ -33,7 +35,6 @@ public class OrderManager {
     }
 
     public void renderOder() {
-        System.out.println("㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋CUSTOMER㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋");
         BufferedReader br = null;
         try {
             String line;
@@ -77,8 +78,8 @@ public class OrderManager {
         List<Order> orderPersons = new ArrayList<>();
         Scanner input = new Scanner(System.in);
         Long id = System.currentTimeMillis() / 1000;
-        String fullName = UserValidateUltils.inputFullName();
-        String phone = UserValidateUltils.inputPhone();
+        String fullName = scanner.nextLine(); //UserValidateUltils.inputFullName();
+        String phone = scanner.nextLine(); //UserValidateUltils.inputPhone();
         System.out.println("Nhập địa chỉ người mua hàng: ");
         String address = input.nextLine();
         Order newOrder = new Order(id, fullName, phone, address);

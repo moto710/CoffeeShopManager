@@ -48,6 +48,7 @@ public class ProductView extends ProductTemplate{
                 }
             } catch (Exception e) {
                 System.err.println("Wrong input, try again!!!!!");
+                e.printStackTrace();
             }
         } while (flag == true);
     }

@@ -2,6 +2,7 @@ package product;
 
 import java.util.Date;
 
+import static utils.DateUtils.formatDateToString;
 import static utils.DateUtils.parseStringToDate;
 
 public class Product {
@@ -11,8 +12,8 @@ public class Product {
     private String unit;
     private double price;
     private String supplier;
-    private Date dateCreate;
-    private Date dateUpdate;
+    private String dateCreate;
+    private String dateUpdate;
 
 
     public Product() {
@@ -26,8 +27,19 @@ public class Product {
         this.unit = unit;
         this.price = price;
         this.supplier = supplier;
-        this.dateCreate = new Date();
-        this.dateUpdate = new Date();
+        this.dateCreate = formatDateToString(new Date());
+        this.dateUpdate = formatDateToString(new Date());
+    }
+    public Product(long id, String name, double inventory, String unit, double price, String supplier, String dateCreate,
+                   String dateUpdate) {
+        this.id = id;
+        this.name = name;
+        this.inventory = inventory;
+        this.unit = unit;
+        this.price = price;
+        this.supplier = supplier;
+        this.dateCreate = dateCreate;
+        this.dateUpdate = dateUpdate;
     }
 
     public String getUnit() {
@@ -46,15 +58,15 @@ public class Product {
         this.supplier = supplier;
     }
 
-    public Date getDateCreate() {
+    public String getDateCreate() {
         return dateCreate;
     }
 
-    public Date getDateUpdate() {
+    public String getDateUpdate() {
         return dateUpdate;
     }
 
-    public void setDateUpdate(Date dateUpdate) {
+    public void setDateUpdate(String dateUpdate) {
         this.dateUpdate = dateUpdate;
     }
 
@@ -88,29 +100,21 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", inventory=" + inventory +
-                ", unit='" + unit + '\'' +
-                ", price=" + price +
-                ", supplier='" + supplier + '\'' +
-                ", dateCreate=" + dateCreate +
-                ", dateUpdate=" + dateUpdate +
-                '}';
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s", id, name, inventory, unit, price, supplier, dateCreate, dateUpdate);
     }
 
     public static Product parseProduct(String raw) {
-        Product product = new Product();
         String[] fields = raw.split(",");
-        product.id = Long.parseLong(fields[0]);
-        product.name = fields[1];
-        product.inventory = Double.parseDouble(fields[2]);
-        product.unit = fields[3];
-        product.price = Double.parseDouble(fields[4]);
-        product.supplier = fields[5];
-        product.dateCreate = parseStringToDate(fields[6]);
-        product.dateUpdate = parseStringToDate(fields[7]);
+        long id = Long.parseLong(fields[0]);
+        String name = fields[1];
+        double inventory = Double.parseDouble(fields[2]);
+        String unit = fields[3];
+        double price = Double.parseDouble(fields[4]);
+        String supplier = fields[5];
+        String dateCreate = fields[6];
+        String dateUpdate = fields[7];
+
+        Product product = new Product(id, name, inventory, unit, price, supplier, dateCreate, dateUpdate);
 
         return product;
     }

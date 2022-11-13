@@ -1,4 +1,4 @@
-package order;
+package order.orderitem;
 
 public class OrderItem {
     private Long id;

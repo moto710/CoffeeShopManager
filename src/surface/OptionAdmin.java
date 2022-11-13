@@ -1,20 +1,14 @@
 package surface;
 
-import product.ProductManagement;
 import login.view.LoginTemplate;
-import order.AllOrderManager;
-import order.DayOrderManager;
-import order.OrderItemManager;
-import order.OrderManager;
-import utils.AddOrderItemInAllOrder;
-import utils.BackMenuOrExit;
-import utils.TotalPrice;
+import product.view.ProductView;
+import user.view.UserView;
 
 public class OptionAdmin extends LoginTemplate {
 
-    static AddOrderItemInAllOrder addOrderItemInAllOrder = new AddOrderItemInAllOrder();
-    static BackMenuOrExit backMenuOrExit = new BackMenuOrExit();
-    static TotalPrice totalPrice = new TotalPrice();
+//    static AddOrderItemInAllOrder addOrderItemInAllOrder = new AddOrderItemInAllOrder();
+//    static BackMenuOrExit backMenuOrExit = new BackMenuOrExit();
+//    static TotalPrice totalPrice = new TotalPrice();
 
     @Override
     protected void showBody() {
@@ -24,9 +18,11 @@ public class OptionAdmin extends LoginTemplate {
             RenderListView renderList = new RenderListView();
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
-                case 1: //manage User
+                case 1:
+                    UserView userView = new UserView();
                     break;
-                case 2: //manage product
+                case 2:
+                    ProductView productView = new ProductView();
                     break;
                 case 3: //manage cart
                     break;

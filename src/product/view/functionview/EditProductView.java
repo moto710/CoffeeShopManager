@@ -3,6 +3,8 @@ package product.view.functionview;
 import product.Product;
 import product.view.ProductTemplate;
 
+import java.util.List;
+
 
 public class EditProductView extends ProductTemplate {
     public EditProductView(){
@@ -11,6 +13,7 @@ public class EditProductView extends ProductTemplate {
     @Override
     protected void showBody() {
         boolean flag = false;
+        List<Product> products = productManagement.findAll();
         Product needEdit = new Product();
         int id = 0;
 
@@ -44,6 +47,7 @@ public class EditProductView extends ProductTemplate {
                     case 1:
                         System.out.println("Enter new product's name");
                         String name = scanner.nextLine();
+                        products.
                         productManagement.editProductName(id, name);
                         break;
                     case 2:
@@ -91,13 +95,14 @@ public class EditProductView extends ProductTemplate {
                         break;
                 }
             } catch (Exception e) {
-                System.err.println("Wrong input, try again!");
+                System.err.println("Wrong input, try again, bae!");
+                e.printStackTrace();
                 flag = true;
                 scanner.reset();
             }
         } while (flag);
 
-        showProduct(productManagement.products());
+        showProduct(products);
     }
     public void menuEdit() {
         System.out.println("What part of product do you want to edit?");

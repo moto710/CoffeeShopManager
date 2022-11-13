@@ -1,11 +1,11 @@
 package utils;
 
 import order.AllOrderManager;
-import order.OrderItemManager;
-import order.OrderManager;
+import order.orderitem.OrderItemManager;
+import order.order.OrderManager;
 import order.AllOrder;
-import order.Order;
-import order.OrderItem;
+import order.order.Order;
+import order.orderitem.OrderItem;
 
 import java.time.Instant;
 import java.util.List;

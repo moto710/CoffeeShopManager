@@ -55,12 +55,10 @@ public class AddProductView extends ProductTemplate {
         System.out.println("Enter new product's supplier:");
         String supplier = scanner.nextLine();
 
-        Date dateCreate = new Date();
-        Date dateUpdate = new Date();
-
         Product newProduct = new Product(name, inventory, unit, entryPrice, supplier);
-        ProductManagement.addProduct(newProduct);
+        productManagement.addProduct(newProduct);
+        System.out.println(newProduct);
 
-        showProduct(products);
+//        showProduct(products);
     }
 }

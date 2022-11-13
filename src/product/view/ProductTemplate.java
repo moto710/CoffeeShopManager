@@ -16,7 +16,7 @@ public abstract class ProductTemplate extends ViewTemplate {
     }
     public static void showProduct(List<Product> productslist){
         for (Product product : productslist) {
-            System.out.println(product);
+            System.out.println(product.toString());
         }
     }
 }

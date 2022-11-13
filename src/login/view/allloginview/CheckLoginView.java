@@ -5,7 +5,7 @@ import surface.OptionAdmin;
 import surface.OptionUser;
 import utils.ReadWriteFile;
 import user.UserManagement;
-import order.Order;
+import order.order.Order;
 import user.User;
 
 import java.time.Instant;
@@ -62,7 +62,7 @@ public class CheckLoginView extends LoginTemplate {
                         ReadWriteFile.write(SAVE_USER_PATH.getPath(), saveUser);
                         System.out.println("Welcome back, user!");
                         System.out.println("Hello " + user.getFullName());
-                        OptionUser.optionUser();
+//                        OptionUser.optionUser();
                         break;
                     }
                 }else {

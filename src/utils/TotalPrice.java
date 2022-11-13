@@ -2,7 +2,7 @@ package utils;
 
 import order.AllOrderManager;
 import order.DayOrderManager;
-import order.OrderItemManager;
+import order.orderitem.OrderItemManager;
 import order.ShowOldOrderUserManager;
 
 public class TotalPrice {

@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import static enums.FilePath.PRODUCT_LIST_PATH;
+import static utils.DateUtils.formatDateToString;
 
 
 public class ProductManagement {
@@ -47,8 +48,8 @@ public class ProductManagement {
     }
 
     public static void renderProduct() {
-        System.out.println("㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋MENU㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋");
-        System.out.printf("\n\t%-16s %-36s %-26s %-10s %s\n", "ID", "Tên Món Ăn", "Giá Tiền", "Số Lượng", "㊋");
+//        System.out.println("Show product list");
+//        System.out.printf("\n\t%s, %s\n", "id", "name"); //, %s, %s, %s, %s, %s, %s
         BufferedReader br = null;
         try {
             String line;
@@ -66,8 +67,6 @@ public class ProductManagement {
                 e.printStackTrace();
             }
         }
-        System.out.println();
-        System.out.println("㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋");
     }
 
     public static List<String> parseCsvLine(String csvLine) {
@@ -82,7 +81,8 @@ public class ProductManagement {
     }
 
     public static void printProduct(List<String> productList) {
-        System.out.printf("\n\t%-16s %-36s %-26s %-10s %s\n", productList.get(0), productList.get(1), InstantUtils.doubleToVND(Double.parseDouble(productList.get(2))), productList.get(3));
+        System.out.printf("%s, %s, %s, %s, %s, %s, %s, %s\n", productList.get(0), productList.get(1), productList.get(2),
+                productList.get(3), productList.get(4), productList.get(5), productList.get(6), productList.get(7));
     }
 
     public void editProductName(long id, String name) {
@@ -90,7 +90,7 @@ public class ProductManagement {
         List<Product> products = findAll();
         Product temp = searchId(id);
         temp.setName(name);
-        temp.setDateUpdate(new Date());
+        temp.setDateUpdate(formatDateToString(new Date()));
         ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), products);
         renderProduct();
     }
@@ -99,7 +99,7 @@ public class ProductManagement {
         List<Product> products = findAll();
         Product temp = searchId(id);
         temp.setInventory(inventory);
-        temp.setDateUpdate(new Date());
+        temp.setDateUpdate(formatDateToString(new Date()));
         ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), products);
         renderProduct();
     }
@@ -108,7 +108,7 @@ public class ProductManagement {
         List<Product> products = findAll();
         Product temp = searchId(id);
         temp.setUnit(unit);
-        temp.setDateUpdate(new Date());
+        temp.setDateUpdate(formatDateToString(new Date()));
         ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), products);
         renderProduct();
     }
@@ -117,7 +117,7 @@ public class ProductManagement {
         List<Product> products = findAll();
         Product temp = searchId(id);
         temp.setPrice(price);
-        temp.setDateUpdate(new Date());
+        temp.setDateUpdate(formatDateToString(new Date()));
         ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), products);
         renderProduct();
     }
@@ -126,7 +126,7 @@ public class ProductManagement {
         List<Product> products = findAll();
         Product temp = searchId(id);
         temp.setSupplier(supplier);
-        temp.setDateUpdate(new Date());
+        temp.setDateUpdate(formatDateToString(new Date()));
         ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), products);
         renderProduct();
     }
@@ -147,8 +147,8 @@ public class ProductManagement {
     public static Product searchId(long id) {
         List<Product> products = findAll();
         Product temp = new Product();
-        int count = 0;
         for (int i = 0; i < products.size(); i++) {
+            int count = 0;
             if (products.get(i).getId() == id) {
                 temp = products.get(i);
                 count++;
