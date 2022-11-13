@@ -1,7 +1,11 @@
 package user;
 
+import enums.RoleAccount;
+
 import java.util.Date;
 
+import static enums.RoleAccount.USER;
+import static enums.RoleAccount.parseRole;
 import static utils.DateUtils.parseStringToDate;
 
 public class User {
@@ -12,14 +16,15 @@ public class User {
     private String phone;
     private String email;
     private String address;
-    private String role;
+    private RoleAccount role;
     private Date dateCreate;
     private Date dateUpdate;
 
     public User() {
     }
 
-    public User(String userName, String password, String fullName, String phone, String email, String address, String role) {
+    public User(String userName, String password, String fullName, String phone, String email, String address,
+                RoleAccount role) {
         this.id = System.currentTimeMillis() / 1000000;
         this.userName = userName;
         this.password = password;
@@ -41,6 +46,7 @@ public class User {
         this.address = address;
         this.dateCreate = new Date();
         this.dateUpdate = new Date();
+        this.role = USER;
     }
     public static User parseUser(String raw) {
         User user = new User();
@@ -52,7 +58,7 @@ public class User {
         user.phone = fields[4];
         user.email = fields[5];
         user.address = fields[6];
-        user.role = fields[7];
+        user.role = parseRole(fields[7]);
         user.dateCreate = parseStringToDate(fields[8]);
         user.dateUpdate = parseStringToDate(fields[9]);
         return user;
@@ -110,11 +116,11 @@ public class User {
         this.address = address;
     }
 
-    public String getRole() {
+    public RoleAccount getRoleAccount() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRoleAccount(RoleAccount role) {
         this.role = role;
     }
     public Date getDateUpdate() {

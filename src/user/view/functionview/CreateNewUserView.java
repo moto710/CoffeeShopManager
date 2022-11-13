@@ -1,4 +1,4 @@
-package login.view.allloginview;
+package user.view.functionview;
 
 import user.User;
 import user.view.UserTemplate;
@@ -41,6 +41,6 @@ public class CreateNewUserView extends UserTemplate {
         User newUser = new User(userName, password, fullName, phone, email, address);
         userManagement.addUser(newUser);
 
-        showProduct(users);
+        System.out.println(newUser);;
     }
 }

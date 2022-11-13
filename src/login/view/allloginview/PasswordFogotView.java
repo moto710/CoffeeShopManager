@@ -18,11 +18,10 @@ public class PasswordFogotView extends LoginTemplate {
         String userName = scanner.nextLine();
 
         for(User user: userList){
-            String checkUser = user.getUserName();
-            String checkPhone = user.getPhone();
-            String checkEmail = user.getEmail();
+            User temp = new User();
+            if (user.getUserName().equals(userName)) {
+                temp = user;
 
-            if(checkUser.equals(userName)){
                 System.out.println("Enter your email");
                 System.out.printf("===>");
                 String email = scanner.nextLine();
@@ -31,14 +30,14 @@ public class PasswordFogotView extends LoginTemplate {
                 System.out.printf("===>");
                 String phone = scanner.nextLine();
 
-                if(checkPhone.equals(phone) && checkEmail.equals(email)){
-                    System.out.println("Your password: " + user.getPassword());
+                if(temp.getPhone().equals(phone) && temp.getEmail().equals(email)){
+                    System.out.println("Your password: " + temp.getPassword());
                 } else {
                     System.out.println("Invalid information, try again!!!");
                     break;
                 }
             }else {
-                System.out.println("This account does now exist!!!");
+                System.out.println("This account does not exist!!!");
             }
         }
     }

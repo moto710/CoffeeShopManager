@@ -1,6 +1,7 @@
-package user.view;
+package user.view.maybenotuseclass;
 
 import user.*;
+import user.view.CreateUser;
 import utils.*;
 
 import java.io.*;
@@ -31,7 +32,7 @@ public class AddUserView {
         ReadWriteFile.write(CREATE_USER_PATH.getPath(), createUsers);
         List<User> users = UserManagement.findAll();
         User newUser1 = new User(userName,passWord,fullName,phone,email,address,role);
-        newUser1.setDateCreate(new Date());
+//        newUser1.setDateCreate(new Date());
         users.add(newUser1);
         ReadWriteFile.write(USER_LIST_PATH.getPath(), users);
         System.out.println("Đã tạo thành công !!");

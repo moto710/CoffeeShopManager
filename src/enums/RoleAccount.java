@@ -1,20 +1,20 @@
 package enums;
 
-public enum Role {
+public enum RoleAccount {
     ADMIN("ADMIN"),
     USER("USER");
 
     private String value;
-    private Role(String value) {
+    private RoleAccount(String value) {
         this.value = value;
     }
     public String getValue() {
         return this.value;
     }
 
-    public static Role parseRole(String value) {
-        Role[] values = values();
-        for (Role role: values) {
+    public static RoleAccount parseRole(String value) {
+        RoleAccount[] values = values();
+        for (RoleAccount role: values) {
             if(role.value.equals(value))
                 return role;
         }

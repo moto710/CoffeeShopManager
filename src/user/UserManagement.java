@@ -1,5 +1,6 @@
 package user;
 
+import enums.RoleAccount;
 import utils.*;
 
 import java.io.*;
@@ -131,11 +132,11 @@ public class UserManagement {
         ReadWriteFile.write(USER_LIST_PATH.getPath(), users);
         renderUser();
     }
-    public void editUserRole(long id, String role) {
+    public void editUserRole(long id, RoleAccount role) {
         renderUser();
         List<User> users = findAll();
         User temp = searchId(id);
-        temp.setRole(role);
+        temp.setRoleAccount(role);
         temp.setDateUpdate(new Date());
         ReadWriteFile.write(USER_LIST_PATH.getPath(), users);
         renderUser();
@@ -213,6 +214,32 @@ public class UserManagement {
         }
         return sameName;
     }
+    public static User searchPhone(String phone) {
+        List<User> users = findAll();
+        User temp = new User();
+        for (User user : users) {
+            if (user.getPhone().equals(phone)) {
+                temp = user;
+                break;
+            }else {
+                temp = null;
+            }
+        }
+        return temp;
+    }
+    public static User searchEmail(String email) {
+        List<User> users = findAll();
+        User temp = new User();
+        for (User user : users) {
+            if (user.getEmail().equals(email)) {
+                temp = user;
+                break;
+            }else {
+                temp = null;
+            }
+        }
+        return temp;
+    }
 
 
     public static List<User> searchAddress(String address) {
@@ -235,7 +262,7 @@ public class UserManagement {
         List<User> users = findAll();
         List<User> sameRole = new ArrayList<>();
         for (User user : users) {
-            if (user.getRole().equalsIgnoreCase(role)) {
+            if (user.getRoleAccount().getValue().equalsIgnoreCase(role)) {
                 sameRole.add(user);
             }
         }

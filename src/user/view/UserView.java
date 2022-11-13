@@ -1,19 +1,18 @@
-package product.view;
+package user.view;
 
-
-import product.Product;
-import product.view.functionview.*;
+import user.User;
+import user.view.functionview.*;
 
 import java.util.List;
 
-public class ProductView extends ProductTemplate{
-    public ProductView(){
+public class UserView extends UserTemplate{
+    public UserView(){
 
     }
     @Override
     protected void showBody() {
         boolean flag = true;
-        List<Product> products = productManagement.findAll();
+        List<User> userList = userManagement.findAll();
 
         do {
             try {
@@ -22,22 +21,22 @@ public class ProductView extends ProductTemplate{
 
                 switch (choice) {
                     case 1:
-                        showProduct(products);
+                        showUser(userList);
                         break;
                     case 2:
-                        AddProductView addProductView = new AddProductView();
+                        CreateNewUserView createNewUserView = new CreateNewUserView();
                         break;
                     case 3:
-                        EditProductView editProductView = new EditProductView();
+                        EditUserView editProductView = new EditUserView();
                         break;
                     case 4:
-                        RemoveProductView removeProductView = new RemoveProductView();
+                        RemoveUserView removeProductView = new RemoveUserView();
                         break;
                     case 5:
-                        SearchProductView searchProductView = new SearchProductView();
+                        SearchUserView searchProductView = new SearchUserView();
                         break;
                     case 6:
-                        SortProductView sortProductView = new SortProductView();
+                        SortUserView sortProductView = new SortUserView();
                         break;
                     case 0:
                         flag = false;
@@ -52,13 +51,13 @@ public class ProductView extends ProductTemplate{
         } while (flag == true);
     }
     public void menuProductView() {
-        System.out.println("Choose product's function to show:\n");
-        System.out.println("1. Show all products:");
-        System.out.println("2. Add one product:");
-        System.out.println("3. Edit a product:");
-        System.out.println("4. Remove a product:");
-        System.out.println("5. Search products:");
-        System.out.println("6. Sort products list:");
+        System.out.println("Choose user's function to show:\n");
+        System.out.println("1. Show all user:");
+        System.out.println("2. Add one user:");
+        System.out.println("3. Edit a user:");
+        System.out.println("4. Remove a user:");
+        System.out.println("5. Search user:");
+        System.out.println("6. Sort user list:");
         System.out.println("0. Exit!");
     }
 }

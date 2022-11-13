@@ -33,7 +33,7 @@ public class CheckLoginView extends LoginTemplate {
             for (User user : userList) {
                 String checkUser = user.getUserName();
                 String checkPassWord = user.getPassword();
-                String checkRole = user.getRole();
+                String checkRole = user.getRoleAccount().getValue();
 
                 if (checkUser.equals(userName) && checkPassWord.equals(passWord)) {
 

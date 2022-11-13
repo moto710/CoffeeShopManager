@@ -1,6 +1,7 @@
 package login.view.allloginview;
 
 import login.view.LoginTemplate;
+import user.view.functionview.CreateNewUserView;
 
 public class LoginView extends LoginTemplate {
     public LoginView() {
@@ -19,8 +20,10 @@ public class LoginView extends LoginTemplate {
                     CheckLoginView checkLogin = new CheckLoginView();
                     break;
                 case 2: //create account
+                    CreateNewUserView createNewUserView = new CreateNewUserView();
                     break;
                 case 3: //forget password
+                    PasswordFogotView passwordFogotView = new PasswordFogotView();
                     break;
                 case 4: //exit
                     break;
