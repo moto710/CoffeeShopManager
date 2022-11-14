@@ -6,6 +6,7 @@ import java.io.*;
 import java.util.*;
 
 import static enums.FilePath.ORDER_ITEM_PATH;
+import static product.view.ProductTemplate.productManagement;
 
 
 public class OrderItemManagement {
@@ -102,6 +103,18 @@ public class OrderItemManagement {
                 break;
             }
         }
+        ReadWriteFile.write(ORDER_ITEM_PATH.getPath(), list);
+    }
+
+    public void swapOrderItemProduct(long idOrderItem, long idOtherProduct) {
+        List<OrderItem> list = findAll();
+        for (OrderItem item : list) {
+            if (item.getId() == idOrderItem) {
+                item.setProduct(productManagement.searchId(idOtherProduct));
+            }
+        }
+//        OrderItem orderItem = findIdOrderItem(idOrderItem);
+//        orderItem.setProduct(productManagement.searchId(idOtherProduct));
         ReadWriteFile.write(ORDER_ITEM_PATH.getPath(), list);
     }
 }

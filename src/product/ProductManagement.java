@@ -242,22 +242,6 @@ public class ProductManagement {
         }
         return sameSupplier;
     }
-
-//    public static boolean isNameExist(String name) {
-//        List<Product> products = findAll();
-//        boolean flag = false;
-//        int count = 0;
-//        for (int i = 0; i < products.size(); i++) {
-//            if (products.get(i).getName().contains(name)) {
-//                flag = true;
-//                count++;
-//            } else if (i == products.size() - 1 && count == 0) {
-//                flag = false;
-//            }
-//        }
-//
-//        return flag;
-//    }
 }
 
 

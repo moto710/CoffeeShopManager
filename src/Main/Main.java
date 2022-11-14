@@ -1,11 +1,10 @@
 package Main;
 
-import login.view.allloginview.LoginView;
-import surface.OptionAdmin;
+import login.AdminView;
 
 public class Main {
     public static void main(String[] args) {
 
-        OptionAdmin optionAdmin = new OptionAdmin();
+        AdminView optionAdmin = new AdminView();
     }
 }

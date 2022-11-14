@@ -1,18 +1,11 @@
 package login.view.allloginview;
 
 import login.view.LoginTemplate;
-import surface.OptionAdmin;
-import surface.OptionUser;
-import utils.ReadWriteFile;
+import login.AdminView;
 import user.UserManagement;
-import order.order.Order;
 import user.User;
 
-import java.time.Instant;
-import java.util.ArrayList;
 import java.util.List;
-
-import static enums.FilePath.SAVE_USER_PATH;
 
 public class CheckLoginView extends LoginTemplate {
     public CheckLoginView() {
@@ -39,7 +32,7 @@ public class CheckLoginView extends LoginTemplate {
                     if (checkRole.equals("ADMIN")) {
                         System.out.println("Welcome back, admin!");
                         System.out.println("Hello " + user.getFullName());
-                        OptionAdmin optionAdmin = new OptionAdmin();
+                        AdminView adminView = new AdminView();
                         break;
                     }
                     if (checkRole.equals("USER")) {

@@ -5,10 +5,6 @@ public enum FilePath {
     ORDER_PATH("data\\Order.csv"),
     ORDER_ITEM_PATH("data\\OrderItem.csv"),
     PRODUCT_LIST_PATH("data\\ProductList.csv"),
-    ALL_ORDER_PATH("data\\AllOrder.csv"),
-    CREATE_USER_PATH("data\\CreateUser.csv"),
-    DATE_ORDER_PATH("data\\DayOrder.csv"),
-    SAVE_USER_PATH("data\\SaveUser.csv"),
     CART_LIST_PATH("data\\CartList.csv"),
     CUSTOMER_LIST_PATH("data\\CustomerList.csv");
 

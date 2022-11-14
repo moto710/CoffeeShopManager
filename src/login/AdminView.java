@@ -1,10 +1,10 @@
-package surface;
+package login;
 
 import login.view.LoginTemplate;
 import product.view.ProductView;
 import user.view.UserView;
 
-public class OptionAdmin extends LoginTemplate {
+public class AdminView extends LoginTemplate {
 
     @Override
     protected void showBody() {

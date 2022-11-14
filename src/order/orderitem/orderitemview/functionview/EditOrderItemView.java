@@ -43,8 +43,8 @@ public class EditOrderItemView extends OrderItemTemplate {
                 switch (choice) {
                     case 1:
                         System.out.println("Enter new product's ID to change:");
-                        String name = scanner.nextLine();
-                        orderItemManagement.editOrderItemProduct(id, name);
+                        long idChange = Long.parseLong(scanner.nextLine());
+                        orderItemManagement.swapOrderItemProduct(id, idChange);
                         break;
                     case 2:
                         do {

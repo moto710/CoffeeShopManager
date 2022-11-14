@@ -1,9 +1,9 @@
-package order.orderitem.orderitemview;
+package order.cart.view;
 
-import order.orderitem.orderitemview.functionview.*;
+import order.cart.view.functionview.*;
 
-public class OrderItemView extends OrderItemTemplate{
-    public OrderItemView() {
+public class CartView extends CartTemplate{
+    public CartView() {
 
     }
     @Override
@@ -16,16 +16,16 @@ public class OrderItemView extends OrderItemTemplate{
 
                 switch (choice) {
                     case 1:
-                        orderItemManagement.renderOrderItem();
+                        cartManagement.renderCart();
                         break;
                     case 2:
-                        AddOrderItemView addOrderItemView = new AddOrderItemView();
+                        AddCartView addCartView = new AddCartView();
                         break;
                     case 3:
-                        EditOrderItemView editOrderItemView = new EditOrderItemView();
+                        EditCartView editCartView = new EditCartView();
                         break;
                     case 4:
-                        RemoveOrderItemView removeOrderItemView = new RemoveOrderItemView();
+                        RemoveCartView removeCartView = new RemoveCartView();
                         break;
                     case 0:
                         flag = false;
@@ -41,11 +41,11 @@ public class OrderItemView extends OrderItemTemplate{
         } while (flag == true);
     }
     public void menuView() {
-        System.out.println("Choose product's function to show:\n");
-        System.out.println("1. Show all order item:");
-        System.out.println("2. Add one order item:");
-        System.out.println("3. Edit a order item:");
-        System.out.println("4. Remove a order item:");
+        System.out.println("Choose cart's function to show:\n");
+        System.out.println("1. Show all cart:");
+        System.out.println("2. Add one cart:");
+        System.out.println("3. Edit a cart:");
+        System.out.println("4. Remove a cart:");
         System.out.println("0. Exit!");
     }
 }

@@ -29,6 +29,10 @@ public class OrderItem {
         return product;
     }
 
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
     public double getTotal() {
         return total;
     }
