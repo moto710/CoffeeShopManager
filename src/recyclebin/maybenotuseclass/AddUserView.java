@@ -1,15 +1,4 @@
-package user.view.maybenotuseclass;
-
-import user.*;
-import user.view.CreateUser;
-import utils.*;
-
-import java.io.*;
-import java.time.Instant;
-import java.util.*;
-
-import static enums.FilePath.CREATE_USER_PATH;
-import static enums.FilePath.USER_LIST_PATH;
+package recyclebin.maybenotuseclass;
 
 //public class AddUserView {
 ////    private final static String PATCH_CREATEUSER = "D:\\vscode\\module2\\CSModule2\\CSModule2\\data\\CreateUser.csv";

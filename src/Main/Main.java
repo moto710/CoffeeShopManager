@@ -1,15 +1,11 @@
 package Main;
 
-import product.view.ProductView;
-import user.view.UserView;
+import login.view.allloginview.LoginView;
+import surface.OptionAdmin;
 
 public class Main {
     public static void main(String[] args) {
 
-        UserView userView = new UserView();
-
-//        LoginView loginView = new LoginView();
-//        RoleLogin roleLogin = new RoleLogin();
-//        roleLogin.login();
+        OptionAdmin optionAdmin = new OptionAdmin();
     }
 }

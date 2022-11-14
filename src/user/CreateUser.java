@@ -1,4 +1,4 @@
-package user.view;
+package user;
 
 import java.time.Instant;
 

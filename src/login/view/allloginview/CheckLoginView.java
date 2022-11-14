@@ -36,14 +36,6 @@ public class CheckLoginView extends LoginTemplate {
                 String checkRole = user.getRoleAccount().getValue();
 
                 if (checkUser.equals(userName) && checkPassWord.equals(passWord)) {
-
-//                    count++;
-//                    if (checkRole.equals("SADMIN")) {
-//                        System.out.println("     "+"Chào SADMIN " + user.getFullName());
-//                        System.out.println("     "+"Đăng Nhập Thành Công!!");
-//                        OptionSadmin.optionSadmin();
-//                        break;
-//                    }
                     if (checkRole.equals("ADMIN")) {
                         System.out.println("Welcome back, admin!");
                         System.out.println("Hello " + user.getFullName());

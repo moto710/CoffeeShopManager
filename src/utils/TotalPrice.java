@@ -3,7 +3,7 @@ package utils;
 import order.AllOrderManager;
 import order.DayOrderManager;
 import order.orderitem.OrderItemManager;
-import order.ShowOldOrderUserManager;
+import order.cart.CartManagement;
 
 public class TotalPrice {
     OrderItemManager orderItemManager = new OrderItemManager();
@@ -28,8 +28,8 @@ public class TotalPrice {
     }
     public void TotalOldorderUser(){
         System.out.println();
-        System.out.println("                                                              Tổng Cộng : " + ShowOldOrderUserManager.totalOldOrderPirce());
-        System.out.println("                                                      Số tiền bạn được chiết khấu là : " + (ShowOldOrderUserManager.totalOldOrderPirce())/20);
+        System.out.println("                                                              Tổng Cộng : " + CartManagement.totalOldOrderPirce());
+        System.out.println("                                                      Số tiền bạn được chiết khấu là : " + (CartManagement.totalOldOrderPirce())/20);
         System.out.println("㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋㊋");
 
     }

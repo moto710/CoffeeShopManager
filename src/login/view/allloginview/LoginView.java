@@ -97,7 +97,7 @@ public class LoginView extends LoginTemplate {
         System.out.println();
         System.out.println("\t1. Login");
         System.out.println("\t2. Create Account");
-        System.out.println("\t3. Fogot Password");
+        System.out.println("\t3. Forget Password");
         System.out.println("\t0. Exit!");
         System.out.println();
         System.out.println("***********************************************");

@@ -1,9 +1,8 @@
 package order.order;
 
-import order.order.Order;
+import product.Product;
 import utils.ReadWriteFile;
 import utils.InstantUtils;
-//import utils.UserValidateUltils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -14,15 +13,22 @@ import java.util.List;
 import java.util.Scanner;
 
 import static enums.FilePath.ORDER_PATH;
+import static enums.FilePath.PRODUCT_LIST_PATH;
 
 public class OrderManager {
-    private Scanner scanner = new Scanner(System.in);
     public List<Order> orders;
-//    private final static String PATCH_ODER = "D:\\vscode\\module2\\CSModule2\\CSModule2\\data\\Order.csv";
 
     public OrderManager() {
-        List<Order> orderList = new ArrayList<>();
-        this.orders = orderList;
+        List<Order> orders = new ArrayList<>();
+        this.orders = orders;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
     public static List<Order> findAll() {
@@ -65,27 +71,16 @@ public class OrderManager {
         return result;
     }
 
-    public static void printMenu(List<String> Order) {
-        System.out.println("ID Người Mua: " + Order.get(0));
-        System.out.println("Tên người mua: " + Order.get(1));
-        System.out.println("Số điện thoại: " + Order.get(2));
-        System.out.println("Địa chỉ: " + Order.get(3));
-        System.out.println("Ngày và Giờ Mua Hàng: " + InstantUtils.instantToString(Instant.parse(Order.get(4))));
+    public static void printMenu(List<String> orderList) {
+        System.out.printf("%s, %s, %s, %s, %s\n", orderList.get(0), orderList.get(1), orderList.get(2), orderList.get(3),
+                orderList.get(4));
     }
 
 
-    public void addOrder() {
-        List<Order> orderPersons = new ArrayList<>();
-        Scanner input = new Scanner(System.in);
-        Long id = System.currentTimeMillis() / 1000;
-        String fullName = scanner.nextLine(); //UserValidateUltils.inputFullName();
-        String phone = scanner.nextLine(); //UserValidateUltils.inputPhone();
-        System.out.println("Nhập địa chỉ người mua hàng: ");
-        String address = input.nextLine();
-        Order newOrder = new Order(id, fullName, phone, address);
-        newOrder.setCreateAt(Instant.now());
-        orderPersons.add(newOrder);
-        ReadWriteFile.write(ORDER_PATH.getPath(), orderPersons);
+    public void addOrder(Order order) {
+        List<Order> orderList = findAll();
+        orderList.add(order);
+        ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), orderList);
     }
 
 }

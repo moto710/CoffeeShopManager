@@ -18,7 +18,8 @@ public class AllOrder {
     public AllOrder() {
     }
 
-    public AllOrder(Long idCustomer, String nameCustomer, String phone, String address, Long iditem, String nameFood, double price, int quantity, Double total, Instant createAt) {
+    public AllOrder(Long idCustomer, String nameCustomer, String phone, String address, Long iditem, String nameFood,
+                    double price, int quantity, Double total, Instant createAt) {
         this.idCustomer = idCustomer;
         this.nameCustomer = nameCustomer;
         this.phone = phone;
