@@ -8,10 +8,10 @@ import java.util.Comparator;
 import java.util.List;
 
 public abstract class ProductTemplate extends ViewTemplate {
-    protected static ProductManagement productManagement;
+    public static ProductManagement productManagement;
 
     protected Comparator<Product> comparator;
-    protected ProductTemplate(){
+    public ProductTemplate(){
         productManagement = new ProductManagement();
     }
     public static void showProduct(List<Product> productslist){

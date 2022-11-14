@@ -1,19 +1,5 @@
 package user.view;
 
-import order.*;
-import order.orderitem.OrderItem;
-import order.orderitem.OrderItemManager;
-import utils.ReadWriteFile;
-import utils.InstantUtils;
-
-import java.io.*;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
-
-import static enums.FilePath.ALL_ORDER_PATH;
-import static enums.FilePath.SAVE_USER_PATH;
-
 //public class SaveUserManager {
 ////    private final static String PATCH_SAVEUSER = "D:\\vscode\\module2\\CSModule2\\CSModule2\\data\\SaveUser.csv";
 ////    private final static String PATCH_ALLORDER = "D:\\vscode\\module2\\CSModule2\\CSModule2\\data\\AllOrder.csv";

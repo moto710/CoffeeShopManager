@@ -1,7 +1,6 @@
 package order.cart;
 
 import order.orderitem.OrderItem;
-import java.util.List;
 
 import static order.orderitem.OrderItem.parseOrderItem;
 
@@ -39,6 +38,12 @@ public class Cart {
         this.orderItem = orderItem;
         this.totalOrderItem = totalOrderItem;
         this.grandTotal = grandTotal;
+    }
+    public Cart(OrderItem orderItem, double grandTotal) {
+        this.id = System.currentTimeMillis()%1000000;
+        this.orderItem = orderItem;
+        this.totalOrderItem = (int) orderItem.getQuantity();
+        this.grandTotal = orderItem.getTotal();
     }
     public static Cart ParseCart(String raw) {
         String[] fields = raw.split(",");

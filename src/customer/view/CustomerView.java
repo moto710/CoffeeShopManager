@@ -1,13 +1,9 @@
-package product.view;
+package customer.view;
 
-import product.Product;
-import product.view.functionview.*;
+import customer.view.functionview.*;
 
-import java.util.List;
-
-
-public class ProductView extends ProductTemplate{
-    public ProductView(){
+public class CustomerView extends CustomerTemplate{
+    public CustomerView(){
 
     }
     @Override
@@ -15,27 +11,27 @@ public class ProductView extends ProductTemplate{
         boolean flag = true;
         do {
             try {
-                menuProductView();
+                menuCustomerView();
                 int choice = Integer.parseInt(scanner.nextLine());
 
                 switch (choice) {
                     case 1:
-                        productManagement.renderProduct();
+                        customerManagement.renderCustomer();
                         break;
                     case 2:
-                        AddProductView addProductView = new AddProductView();
+                        AddCustomerView addProductView = new AddCustomerView();
                         break;
                     case 3:
-                        EditProductView editProductView = new EditProductView();
+                        EditCustomerView editProductView = new EditCustomerView();
                         break;
                     case 4:
-                        RemoveProductView removeProductView = new RemoveProductView();
+                        RemoveCustomerView removeProductView = new RemoveCustomerView();
                         break;
                     case 5:
-                        SearchProductView searchProductView = new SearchProductView();
+                        SearchCustomerView searchProductView = new SearchCustomerView();
                         break;
                     case 6:
-                        SortProductView sortProductView = new SortProductView();
+                        SortCustomerView sortProductView = new SortCustomerView();
                         break;
                     case 0:
                         flag = false;
@@ -49,15 +45,16 @@ public class ProductView extends ProductTemplate{
                 e.printStackTrace();
             }
         } while (flag == true);
+
     }
-    public void menuProductView() {
+    public void menuCustomerView() {
         System.out.println("Choose product's function to show:\n");
-        System.out.println("1. Show all products:");
-        System.out.println("2. Add one product:");
-        System.out.println("3. Edit a product:");
-        System.out.println("4. Remove a product:");
-        System.out.println("5. Search products:");
-        System.out.println("6. Sort products list:");
+        System.out.println("1. Show all customers:");
+        System.out.println("2. Add one customer:");
+        System.out.println("3. Edit a customer:");
+        System.out.println("4. Remove a customer:");
+        System.out.println("5. Search customer:");
+        System.out.println("6. Sort customers list:");
         System.out.println("0. Exit!");
     }
 }

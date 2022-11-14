@@ -1,13 +1,6 @@
 package surface;
 
-import order.order.OrderManager;
-import order.orderitem.OrderItemManager;
-import product.ProductManagement;
-import order.*;
 import user.view.SaveUserManager;
-import utils.*;
-
-import java.util.Scanner;
 
 public class OptionUser {
 

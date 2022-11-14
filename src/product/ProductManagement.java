@@ -78,6 +78,16 @@ public class ProductManagement {
         ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), products);
     }
 
+//    public static Product getProduct(long id) {
+//        List<Product> products = findAll();
+//        Product temp =
+//        for (Product product : products) {
+//            if (product.getId() == id) {
+//
+//            }
+//        }
+//    }
+
     public static void editProductName(long id, String name) {
         List<Product> products = findAll();
         for (int i = 0; i < products.size(); i++) {
@@ -233,21 +243,21 @@ public class ProductManagement {
         return sameSupplier;
     }
 
-    public static boolean isNameExist(String name) {
-        List<Product> products = findAll();
-        boolean flag = false;
-        int count = 0;
-        for (int i = 0; i < products.size(); i++) {
-            if (products.get(i).getName().contains(name)) {
-                flag = true;
-                count++;
-            } else if (i == products.size() - 1 && count == 0) {
-                flag = false;
-            }
-        }
-
-        return flag;
-    }
+//    public static boolean isNameExist(String name) {
+//        List<Product> products = findAll();
+//        boolean flag = false;
+//        int count = 0;
+//        for (int i = 0; i < products.size(); i++) {
+//            if (products.get(i).getName().contains(name)) {
+//                flag = true;
+//                count++;
+//            } else if (i == products.size() - 1 && count == 0) {
+//                flag = false;
+//            }
+//        }
+//
+//        return flag;
+//    }
 }
 
 

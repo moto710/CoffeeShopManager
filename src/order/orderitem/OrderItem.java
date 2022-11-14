@@ -18,7 +18,7 @@ public class OrderItem {
         this.quantity = quantity;
         this.total = total;
     }
-    public OrderItem(Product product, float quantity, double total) {
+    public OrderItem(Product product, float quantity) {
         this.id = System.currentTimeMillis()%1000000;
         this.product = product;
         this.quantity = quantity;

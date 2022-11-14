@@ -1,24 +1,19 @@
 package order.order;
 
-import product.Product;
 import utils.ReadWriteFile;
-import utils.InstantUtils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import static enums.FilePath.ORDER_PATH;
-import static enums.FilePath.PRODUCT_LIST_PATH;
 
-public class OrderManager {
-    public List<Order> orders;
+public class OrderManagement {
+    private List<Order> orders;
 
-    public OrderManager() {
+    public OrderManagement() {
         List<Order> orders = new ArrayList<>();
         this.orders = orders;
     }
@@ -75,12 +70,27 @@ public class OrderManager {
         System.out.printf("%s, %s, %s, %s, %s\n", orderList.get(0), orderList.get(1), orderList.get(2), orderList.get(3),
                 orderList.get(4));
     }
-
+    public Order findIdOrder(long id) {
+        List<Order> list = findAll();
+        Order temp = new Order();
+        for (Order item : list) {
+            if (item.getId() == id) {
+                temp = item;
+                break;
+            }
+        }
+        return temp;
+    }
 
     public void addOrder(Order order) {
         List<Order> orderList = findAll();
         orderList.add(order);
-        ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), orderList);
+        ReadWriteFile.write(ORDER_PATH.getPath(), orderList);
+    }
+    public void removeOrder(long id) {
+        List<Order> list = findAll();
+        list.remove(findIdOrder(id));
+        ReadWriteFile.write(ORDER_PATH.getPath(), list);
     }
 
 }

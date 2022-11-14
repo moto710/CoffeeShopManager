@@ -11,7 +11,6 @@ public class AddProductView extends ProductTemplate {
     }
     @Override
     protected void showBody() {
-//        List<Product> products = productManagement.findAll();
         double inventory = 0;
         int entryPrice = 0;
         boolean flag = false;

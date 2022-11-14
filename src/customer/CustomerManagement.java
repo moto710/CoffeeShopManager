@@ -7,9 +7,12 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static enums.FilePath.CUSTOMER_LIST_PATH;
+import static enums.FilePath.PRODUCT_LIST_PATH;
+import static utils.DateUtils.formatDateToString;
 
 public class CustomerManagement {
     private static List<Customer> customerList;
@@ -76,12 +79,13 @@ public class CustomerManagement {
     }
     public void removeCustomer(long id) {
         List<Customer> list = findAll();
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getId() == id) {
-                list.remove(i);
-                break;
-            }
-        }
+        list.remove(searchId(id));
+//        for (int i = 0; i < list.size(); i++) {
+//            if (list.get(i).getId() == id) {
+//                list.remove(i);
+//                break;
+//            }
+//        }
         ReadWriteFile.write(CUSTOMER_LIST_PATH.getPath(), list);
     }
     public static Customer searchId(long id) {
@@ -90,6 +94,92 @@ public class CustomerManagement {
         for (int i = 0; i < customers.size(); i++) {
             if (customers.get(i).getId() == id) {
                 temp = customers.get(i);
+                break;
+            }
+        }
+        return temp;
+    }
+    public static void editCustomerName(long id, String name) {
+        List<Customer> customers = findAll();
+        for (int i = 0; i < customers.size(); i++) {
+            if (customers.get(i).getId() == id) {
+                customers.get(i).setFullName(name);
+                customers.get(i).setDateUpdate(formatDateToString(new Date()));
+                break;
+            }
+        }
+        ReadWriteFile.write(CUSTOMER_LIST_PATH.getPath(), customers);
+    }
+    public static void editCustomerEmail(long id, String email) {
+        List<Customer> customers = findAll();
+        for (int i = 0; i < customers.size(); i++) {
+            if (customers.get(i).getId() == id) {
+                customers.get(i).setEmail(email);
+                customers.get(i).setDateUpdate(formatDateToString(new Date()));
+                break;
+            }
+        }
+        ReadWriteFile.write(CUSTOMER_LIST_PATH.getPath(), customers);
+    }
+    public static void editCustomerAddress(long id, String address) {
+        List<Customer> customers = findAll();
+        for (int i = 0; i < customers.size(); i++) {
+            if (customers.get(i).getId() == id) {
+                customers.get(i).setEmail(address);
+                customers.get(i).setDateUpdate(formatDateToString(new Date()));
+                break;
+            }
+        }
+        ReadWriteFile.write(CUSTOMER_LIST_PATH.getPath(), customers);
+    }
+    public static void editCustomerPhone(long id, String phone) {
+        List<Customer> customers = findAll();
+        for (int i = 0; i < customers.size(); i++) {
+            if (customers.get(i).getId() == id) {
+                customers.get(i).setPhone(phone);
+                customers.get(i).setDateUpdate(formatDateToString(new Date()));
+                break;
+            }
+        }
+        ReadWriteFile.write(CUSTOMER_LIST_PATH.getPath(), customers);
+    }
+    public static List<Customer> searchName(String name) {
+        List<Customer> customers = findAll();
+        List<Customer> sameName = new ArrayList<>();
+        for (Customer item : customers) {
+            if (item.getFullName().toUpperCase().contains(name)) {
+                sameName.add(item);
+            }
+        }
+        return sameName;
+    }
+    public static Customer searchEmail(String email) {
+        List<Customer> customers = findAll();
+        Customer temp = null;
+        for (Customer item : customers) {
+            if (item.getEmail().equals(email)) {
+                temp = item;
+                break;
+            }
+        }
+        return temp;
+    }
+    public static List<Customer> searchAddress(String address) {
+        List<Customer> customers = findAll();
+        List<Customer> sameAddress = new ArrayList<>();
+        for (Customer item : customers) {
+            if (item.getAddress().toUpperCase().contains(address)) {
+                sameAddress.add(item);
+            }
+        }
+        return sameAddress;
+    }
+    public static Customer searchPhone(String phone) {
+        List<Customer> customers = findAll();
+        Customer temp = null;
+        for (Customer item : customers) {
+            if (item.getPhone().equals(phone)) {
+                temp = item;
                 break;
             }
         }
