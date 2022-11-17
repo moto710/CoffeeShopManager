@@ -3,44 +3,63 @@ package views.user.functionview;
 import models.User;
 import viewtemplate.UserTemplate;
 
-import java.util.Date;
 import java.util.List;
 
+import static utils.ValidateUtils.*;
+import static utils.ValidateUtils.isNameValid;
+import static views.login.view.allloginview.ShowUsersView.printUser;
+
 public class CreateNewUserView extends UserTemplate {
-    public CreateNewUserView(){
+    public CreateNewUserView() {
 
     }
+
     @Override
     protected void showBody() {
-        List<User> users = userManagement.findAll();
+        List<User> users = userService.findAll();
 
         System.out.println("Create new user:");
         System.out.println("----------------");
 
-        System.out.println("Enter new user's user name:");
-        String userName = scanner.nextLine();
+        String userName;
+        do {
+            System.out.println("Enter new user's user name (Upper case first letter)");
+            userName = scanner.nextLine();
+        } while (!isUserNameValid(userName));
 
-        System.out.println("Enter new user's password:");
-        String password = scanner.nextLine();
+        String password;
+        do {
+            System.out.println("Enter new user's password (At least one upper case, one number, one special character, more than 6 characters)");
+            password = scanner.nextLine();
+        } while (!isPasswordValid(password));
 
-        System.out.println("Enter new user's full name:");
-        String fullName = scanner.nextLine();
+        String fullName;
+        do {
+            System.out.println("Enter new user's full name (Upper case first letter)");
+            fullName = scanner.nextLine();
+        } while (!isNameValid(fullName));
 
-        System.out.println("Enter new user's phone number:");
-        String phone = scanner.nextLine();
+        String phone;
+        do {
+            System.out.println("Enter new user's phone number:");
+            phone = scanner.nextLine();
+        } while (!isPhoneValid(phone));
 
-        System.out.println("Enter new user's email:");
-        String email = scanner.nextLine();
+        String email;
+        do {
+            System.out.println("Enter new user's email:");
+            email = scanner.nextLine();
+        } while (!isEmailValid(email));
 
-        System.out.println("Enter new user's address:");
-        String address = scanner.nextLine();
-
-        Date dateCreate = new Date();
-        Date dateUpdate = new Date();
+        String address;
+        do {
+            System.out.println("Enter new user's address:");
+            address = scanner.nextLine();
+        } while (!isNameValid(address));
 
         User newUser = new User(userName, password, fullName, phone, email, address);
-        userManagement.addUser(newUser);
-
-        System.out.println(newUser);;
+        userService.addUser(newUser);
+        printUser(newUser);
+        ;
     }
 }

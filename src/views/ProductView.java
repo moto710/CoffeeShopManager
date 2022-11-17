@@ -18,7 +18,7 @@ public class ProductView extends ProductTemplate {
 
                 switch (choice) {
                     case 1:
-                        productManagement.renderProduct();
+                        ShowAllProduct showAllProduct = new ShowAllProduct();
                         break;
                     case 2:
                         AddProductView addProductView = new AddProductView();
@@ -49,13 +49,18 @@ public class ProductView extends ProductTemplate {
         } while (flag == true);
     }
     public void menuProductView() {
-        System.out.println("Choose views.product's function to show:\n");
-        System.out.println("1. Show all products:");
-        System.out.println("2. Add one views.product:");
-        System.out.println("3. Edit a views.product:");
-        System.out.println("4. Remove a views.product:");
-        System.out.println("5. Search products:");
-        System.out.println("6. Sort products list:");
-        System.out.println("0. Exit!");
+        System.out.println("=========== Choose product's function to show =============");
+        System.out.println("=                                                         =");
+        System.out.println("=               1. Show all products                      =");
+        System.out.println("=               2. Add one product                        =");
+        System.out.println("=               3. Edit a product                         =");
+        System.out.println("=               4. Remove a product                       =");
+        System.out.println("=               5. Search products                        =");
+        System.out.println("=               6. Sort products list                     =");
+        System.out.println("=               0. Exit                                   =");
+        System.out.println("=                                                         =");
+        System.out.println("===========================================================");
+        System.out.println("Choose function to show!");
+        System.out.print("===>");
     }
 }

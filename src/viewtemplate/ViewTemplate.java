@@ -18,7 +18,7 @@ public abstract class ViewTemplate {
 
     protected void showFooter() {
         System.out.println("--------------");
-        System.out.println("Let me pass this module!");
+        System.out.println("Good Morning!");
     }
 
     protected void showPage() {

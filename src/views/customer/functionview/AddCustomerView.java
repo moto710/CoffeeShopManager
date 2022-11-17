@@ -9,23 +9,22 @@ public class AddCustomerView extends CustomerTemplate {
     }
     @Override
     protected void showBody() {
-        System.out.println("Add new views.customer:");
+        System.out.println("Add new customer:");
         System.out.println("----------------");
-        System.out.println("Enter new views.customer's full name:");
+        System.out.println("Enter new customer's full name:");
         String name = scanner.nextLine();
 
-        System.out.println("Enter new views.customer's email:");
+        System.out.println("Enter new customer's email:");
         String email = scanner.nextLine();
 
-        System.out.println("Enter new views.customer's address:");
+        System.out.println("Enter new customer's address:");
         String address = scanner.nextLine();
 
-        System.out.println("Enter new views.customer's phone:");
+        System.out.println("Enter new customer's phone:");
         String phone = scanner.nextLine();
 
         Customer customer = new Customer(name, email, address, phone);
         customerManagement.addCustomer(customer);
-
-        System.out.println(customer);
+        System.out.println("Add new customer success!");
     }
 }

@@ -13,7 +13,7 @@ public class RemoveUserView extends UserTemplate {
         do {
             System.out.println("Please enter views.user's ID to remove:");
             Long id = Long.parseLong(scanner.nextLine());
-            User temp = userManagement.searchId(id);
+            User temp = userService.searchId(id);
             if (temp == null) {
                         System.out.println("The views.user with ID = " + id + " does not exist!");
                         flag = true;
@@ -23,7 +23,7 @@ public class RemoveUserView extends UserTemplate {
                         switch (comfirm) {
                             case "Y":
                             case "y":
-                                userManagement.removeUser(id);
+                                userService.removeUser(id);
                                 break;
                             case "N":
                             case "n":

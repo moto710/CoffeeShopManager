@@ -16,12 +16,12 @@ public class EditProductView extends ProductTemplate {
 
         do {
             try{
-                System.out.println("Enter views.product's ID to edit:");
+                System.out.println("Enter product's ID to edit:");
                 id = Integer.parseInt(scanner.nextLine());
 
                 needEdit = productManagement.searchId(id);
                 if (needEdit == null) {
-                    System.out.println("Don't find views.product with ID = " + id);
+                    System.out.println("Don't find product with ID = " + id);
                     flag = true;
                 } else {
                     System.out.println(needEdit);
@@ -42,14 +42,14 @@ public class EditProductView extends ProductTemplate {
 
                 switch (choice) {
                     case 1:
-                        System.out.println("Enter new views.product's name");
+                        System.out.println("Enter new product's name");
                         String name = scanner.nextLine();
                         productManagement.editProductName(id, name);
                         break;
                     case 2:
                         do {
                             try {
-                                System.out.println("Enter new views.product's inventory:");
+                                System.out.println("Enter new product's inventory:");
                                 productManagement.editProductInventory(id, Double.parseDouble(scanner.nextLine()));
                                 flag = false;
                             } catch (Exception e) {
@@ -62,7 +62,7 @@ public class EditProductView extends ProductTemplate {
                     case 3:
                         do {
                             try {
-                                System.out.println("Enter new views.product's price:");
+                                System.out.println("Enter new product's price:");
                                 productManagement.editProductPrice(id,Integer.parseInt(scanner.nextLine()));
                                 flag = false;
                                 break;
@@ -74,11 +74,11 @@ public class EditProductView extends ProductTemplate {
                         } while (flag);
                         break;
                     case 4:
-                        System.out.println("Enter new views.product's unit:");
+                        System.out.println("Enter new product's unit:");
                         productManagement.editProductUnit(id, scanner.nextLine());
                         break;
                     case 5:
-                        System.out.println("Enter new views.product's supplier:");
+                        System.out.println("Enter new product's supplier:");
                         productManagement.editProductSupplier(id, scanner.nextLine());
                         break;
                     case 0:
@@ -98,12 +98,17 @@ public class EditProductView extends ProductTemplate {
         } while (flag);
     }
     public void menuEdit() {
-        System.out.println("What part of views.product do you want to edit?");
-        System.out.println("1. Name:");
-        System.out.println("2. Inventory:");
-        System.out.println("3. Price:");
-        System.out.println("4. Unit");
-        System.out.println("5. Supplier:");
-        System.out.println("0. Exit!");
+        System.out.println("=========== What part of product do you want to edit? =============");
+        System.out.println("=                                                                 =");
+        System.out.println("=                         1. Name                                 =");
+        System.out.println("=                         2. Inventory                            =");
+        System.out.println("=                         3. Price                                =");
+        System.out.println("=                         4. Unit                                 =");
+        System.out.println("=                         5. Supplier                             =");
+        System.out.println("=                         0. Exit!                                =");
+        System.out.println("=                                                                 =");
+        System.out.println("===================================================================");
+        System.out.println("Choose function to show!");
+        System.out.print("===>");
     }
 }

@@ -1,10 +1,10 @@
 package views.customer.functionview.allsortview;
 
 import models.Customer;
+import service.CustomerService;
 import views.customer.sort.CompareCustomerEmail;
 import viewtemplate.CustomerTemplate;
 
-import java.util.Collections;
 import java.util.List;
 
 public class SortCustomerByEmailAscView extends CustomerTemplate {
@@ -14,8 +14,8 @@ public class SortCustomerByEmailAscView extends CustomerTemplate {
     @Override
     protected void showBody() {
         comparator = new CompareCustomerEmail();
-        List<Customer> customers = customerManagement.findAll();
-        Collections.sort(customers, comparator);
-        showCustomer(customers);
+        List<Customer> customers = CustomerService.findAll();
+        customers.sort(comparator);
+        showCustomerList(customers);
     }
 }

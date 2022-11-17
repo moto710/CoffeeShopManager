@@ -50,15 +50,20 @@ public class SortCustomerView extends CustomerTemplate {
         } while (flag);
     }
     public void menuSort(){
-        System.out.println("What style of sort do you want?");
-        System.out.println("1. Sort by ID with ascending:");
-        System.out.println("2. Sort by ID with descending:");
-        System.out.println("3. Sort by name with ascending:");
-        System.out.println("4. Sort by name with descending:");
-        System.out.println("5. Sort by email with ascending:");
-        System.out.println("6. Sort by email with descending:");
-        System.out.println("7. Sort by date create with ascending:");
-        System.out.println("8. Sort by date create with descending:");
-        System.out.println("0. Exit!");
+        System.out.println("============ What style of sort do you want? ==============");
+        System.out.println("=                                                         =");
+        System.out.println("=            1. Sort by ID with ascending                 =");
+        System.out.println("=            2. Sort by ID with descending                =");
+        System.out.println("=            3. Sort by name with ascending               =");
+        System.out.println("=            4. Sort by name with descending              =");
+        System.out.println("=            5. Sort by email with ascending              =");
+        System.out.println("=            6. Sort by email with descending             =");
+        System.out.println("=            7. Sort by date create with ascending        =");
+        System.out.println("=            8. Sort by date create with descending       =");
+        System.out.println("=            0. Exit!                                     =");
+        System.out.println("=                                                         =");
+        System.out.println("===========================================================");
+        System.out.println("Choose function to show!");
+        System.out.print("===>");
     }
 }

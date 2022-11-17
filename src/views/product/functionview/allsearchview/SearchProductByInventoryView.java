@@ -12,13 +12,13 @@ public class SearchProductByInventoryView extends ProductTemplate {
         int inventory;
         do {
             try {
-                System.out.println("Enter views.product's inventory to search:");
+                System.out.println("Enter product's inventory to search:");
                 inventory = Integer.parseInt(scanner.nextLine());
 
                 if (productManagement.searchInventory(inventory) == null) {
-                    System.out.printf("There is no views.product with inventory = %s \n", inventory);
+                    System.out.printf("There is no product with inventory = %s \n", inventory);
                 }else {
-                    showProduct(productManagement.searchInventory(inventory));
+                    showProductList(productManagement.searchInventory(inventory));
                 }
             }catch(NumberFormatException numberFormatException){
                 System.err.println("Invalid input, re-enter please!!!");

@@ -23,7 +23,7 @@ public class LoginView extends LoginTemplate {
                     CreateNewUserView createNewUserView = new CreateNewUserView();
                     break;
                 case 3: //forget password
-                    PasswordFogotView passwordFogotView = new PasswordFogotView();
+                    PasswordForgotView passwordFogotView = new PasswordForgotView();
                     break;
                 case 4: //exit
                     break;

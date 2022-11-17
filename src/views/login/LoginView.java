@@ -21,10 +21,7 @@ public class LoginView extends LoginTemplate {
                         CheckLoginView checkLoginView = new CheckLoginView();
                         break;
                     case 2:
-                        CreateNewUserView createNewUser = new CreateNewUserView();
-                        break;
-                    case 3:
-                        PasswordFogotView passwordFogotView = new PasswordFogotView();
+                        PasswordForgotView passwordForgotView = new PasswordForgotView();
                         break;
                     case 0:
                         System.exit(0);
@@ -45,8 +42,7 @@ public class LoginView extends LoginTemplate {
         System.out.println("================= LOGIN ===================");
         System.out.println("=                                         =");
         System.out.println("=              1. Login                   =");
-        System.out.println("=              2. Create Account          =");
-        System.out.println("=              3. Forgot Password         =");
+        System.out.println("=              2. Forgot Password         =");
         System.out.println("=              0. Exit                    =");
         System.out.println("=                                         =");
         System.out.println("===========================================");

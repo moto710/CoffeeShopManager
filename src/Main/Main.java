@@ -6,9 +6,9 @@ import views.login.LoginView;
 public class Main {
     public static void main(String[] args) {
 
-        AdminView optionAdmin = new AdminView();
+//        AdminView optionAdmin = new AdminView();
 
-//        LoginView loginView = new LoginView();
+        LoginView loginView = new LoginView();
 
     }
 

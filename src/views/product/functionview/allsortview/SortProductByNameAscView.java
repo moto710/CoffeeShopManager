@@ -16,6 +16,6 @@ public class SortProductByNameAscView extends ProductTemplate {
         comparator = new ComparatorByName();
         List<Product> products = productManagement.findAll();
         Collections.sort(products, comparator);
-        showProduct(products);
+        showProductList(products);
     }
 }

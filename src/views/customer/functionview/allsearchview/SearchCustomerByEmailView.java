@@ -10,9 +10,8 @@ public class SearchCustomerByEmailView extends CustomerTemplate {
     }
     @Override
     protected void showBody() {
-        System.out.println("Enter views.customer's email to search:");
+        System.out.println("Enter customer's email to search:");
         String email = scanner.nextLine();
-        Customer temp = customerManagement.searchEmail(email);
-        System.out.println(temp);
+        showCustomer(customerManagement.searchEmail(email));
     }
 }

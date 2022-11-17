@@ -11,14 +11,14 @@ public class SearchProductByNameView extends ProductTemplate {
     }
     @Override
     protected void showBody() {
-        System.out.println("Enter views.product's name to search:");
+        System.out.println("Enter product's name to search:");
         String name = scanner.nextLine();
         List<Product> list = productManagement.searchName(name);
 
         if (list == null) {
-            System.out.println("The views.product with name \"" + name + "\" does not exist!");
+            System.out.println("The product with name \"" + name + "\" does not exist!");
         } else {
-            showProduct(list);
+            showProductList(list);
         }
     }
 }

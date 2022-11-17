@@ -13,13 +13,13 @@ public class SearchProductByIdView extends ProductTemplate {
 
         do {
             try {
-                System.out.println("Enter views.product's ID to search:");
+                System.out.println("Enter product's ID to search:");
                 id = Integer.parseInt(scanner.nextLine());
                 if (productManagement.searchId(id) == null) {
                     System.out.printf("Product with ID \"%s\" does not exist!!!\n", id);
                     break;
                 }else {
-                    System.out.println(productManagement.searchId(id));
+                    showProduct(productManagement.searchId(id));
                 }
             } catch (NumberFormatException numberFormatException) {
                 System.err.println("Invalid input, re-enter!");

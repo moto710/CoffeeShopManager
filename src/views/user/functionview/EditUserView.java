@@ -15,12 +15,12 @@ public class EditUserView extends UserTemplate {
 
         do {
             try{
-                System.out.println("Enter views.user's ID to edit:");
+                System.out.println("Enter user's ID to edit:");
                 id = Long.parseLong(scanner.nextLine());
 
-                temp = userManagement.searchId(id);
+                temp = userService.searchId(id);
                 if (temp == null) {
-                    System.out.println("Don't find views.user with ID = " + id);
+                    System.out.println("Don't find user with ID = " + id);
                     flag = true;
                 } else {
                     System.out.println(temp);
@@ -41,34 +41,34 @@ public class EditUserView extends UserTemplate {
 
                 switch (choice) {
                     case 1:
-                        System.out.println("Enter new views.user's views.user name:");
+                        System.out.println("Enter new user's views.user name:");
                         String userName = scanner.nextLine();
-                        userManagement.editUserUserName(id, userName);
+                        userService.editUserUserName(id, userName);
                         break;
                     case 2:
-                        System.out.println("Enter new views.user's password:");
+                        System.out.println("Enter new user's password:");
                         String password = scanner.nextLine();
-                        userManagement.editUserPassword(id, password);
+                        userService.editUserPassword(id, password);
                         break;
                     case 3:
-                        System.out.println("Enter new views.user's full name:");
+                        System.out.println("Enter new user's full name:");
                         String fullName = scanner.nextLine();
-                        userManagement.editUserFullName(id, fullName);
+                        userService.editUserFullName(id, fullName);
                         break;
                     case 4:
-                        System.out.println("Enter new views.user's phone number:");
+                        System.out.println("Enter new user's phone number:");
                         String phone = scanner.nextLine();
-                        userManagement.editUserPhone(id, phone);
+                        userService.editUserPhone(id, phone);
                         break;
                     case 5:
-                        System.out.println("Enter new views.user's email:");
+                        System.out.println("Enter new user's email:");
                         String email = scanner.nextLine();
-                        userManagement.editUserEmail(id, email);
+                        userService.editUserEmail(id, email);
                         break;
                     case 6:
-                        System.out.println("Enter new views.user's address:");
+                        System.out.println("Enter new user's address:");
                         String address = scanner.nextLine();
-                        userManagement.editUserAddress(id, address);
+                        userService.editUserAddress(id, address);
                         break;
                     case 0:
                         System.out.println("Exit!");
@@ -87,12 +87,17 @@ public class EditUserView extends UserTemplate {
         } while (flag);
     }
     public void menuEdit() {
-        System.out.println("What part of views.user do you want to edit?");
-        System.out.println("1. User name:");
-        System.out.println("2. Password:");
-        System.out.println("3. Full name:");
-        System.out.println("4. phone");
-        System.out.println("5. email:");
-        System.out.println("6. address:");
+        System.out.println("======== What part of user do you want to edit? ==========");
+        System.out.println("=                                                        =");
+        System.out.println("=                    1. User name                        =");
+        System.out.println("=                    2. Password                         =");
+        System.out.println("=                    3. Full name                        =");
+        System.out.println("=                    4. Phone                            =");
+        System.out.println("=                    5. Email                            =");
+        System.out.println("=                    6. Address                          =");
+        System.out.println("=                                                        =");
+        System.out.println("==========================================================");
+        System.out.println("Choose function to show!");
+        System.out.print("===>");
     }
 }

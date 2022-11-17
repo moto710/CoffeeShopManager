@@ -17,7 +17,7 @@ public class CustomerView extends CustomerTemplate {
 
                 switch (choice) {
                     case 1:
-                        customerManagement.renderCustomer();
+                        ShowAllCustomerView showAllCustomerView = new ShowAllCustomerView();
                         break;
                     case 2:
                         AddCustomerView addProductView = new AddCustomerView();
@@ -49,13 +49,18 @@ public class CustomerView extends CustomerTemplate {
 
     }
     public void menuCustomerView() {
-        System.out.println("Choose views.product's function to show:\n");
-        System.out.println("1. Show all customers:");
-        System.out.println("2. Add one views.customer:");
-        System.out.println("3. Edit a views.customer:");
-        System.out.println("4. Remove a views.customer:");
-        System.out.println("5. Search views.customer:");
-        System.out.println("6. Sort customers list:");
-        System.out.println("0. Exit!");
+        System.out.println("================= Choose product's function to show ===================");
+        System.out.println("=                                                                     =");
+        System.out.println("=                      1. Show all customers                          =");
+        System.out.println("=                      2. Add one customer                            =");
+        System.out.println("=                      3. Edit a customer                             =");
+        System.out.println("=                      4. Remove a customer                           =");
+        System.out.println("=                      5. Search customer                             =");
+        System.out.println("=                      6. Sort customers list                         =");
+        System.out.println("=                      0. Exit!                                       =");
+        System.out.println("=                                                                     =");
+        System.out.println("=======================================================================");
+        System.out.println("Choose function to show!");
+        System.out.print("===>");
     }
 }

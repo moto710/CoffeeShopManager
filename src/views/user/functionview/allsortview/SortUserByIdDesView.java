@@ -7,16 +7,18 @@ import viewtemplate.UserTemplate;
 import java.util.Collections;
 import java.util.List;
 
+import static views.login.view.allloginview.ShowUsersView.showUserList;
+
 public class SortUserByIdDesView extends UserTemplate {
     public SortUserByIdDesView(){
 
     }
     @Override
     protected void showBody() {
-        List<User> users = userManagement.findAll();
+        List<User> users = userService.findAll();
         comparator = new ById();
         Collections.sort(users, comparator);
         Collections.reverse(users);
-        showUser(users);
+        showUserList(users);
     }
 }

@@ -13,13 +13,13 @@ public class SearchProductByPriceView extends ProductTemplate {
 
         do {
             try {
-                System.out.println("Enter views.product's entry price to search:");
+                System.out.println("Enter product's entry price to search:");
                 entryPrice = Integer.parseInt(scanner.nextLine());
 
                 if (productManagement.searchPrice(entryPrice) == null) {
-                    System.out.printf("There is no views.product with entry price = %s \n", entryPrice);
+                    System.out.printf("There is no product with entry price = %s \n", entryPrice);
                 } else {
-                    showProduct(productManagement.searchPrice(entryPrice));
+                    showProductList(productManagement.searchPrice(entryPrice));
                 }
             } catch (NumberFormatException numberFormatException) {
                 System.err.println("Invalid input, try again!");

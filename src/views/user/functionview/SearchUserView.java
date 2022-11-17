@@ -49,17 +49,19 @@ public class SearchUserView extends UserTemplate {
         } while (flag);
     }
     protected void menuUserView() {
-        System.out.println("Search views.user by:");
-        System.out.println("------------------\n");
-        System.out.println("1. ID:");
-        System.out.println("2. User Name:");
-        System.out.println("3. Password:");
-        System.out.println("4. Full name:");
-        System.out.println("5. Phone number:");
-        System.out.println("6. Email:");
-        System.out.println("7. Address:");
-        System.out.println("8. Role:");
-        System.out.println("0. Exit!");
+        System.out.println("============ Search user by ==============");
+        System.out.println("=                                        =");
+        System.out.println("=              1. ID                     =");
+        System.out.println("=              2. User Name              =");
+        System.out.println("=              3. Password               =");
+        System.out.println("=              4. Full name              =");
+        System.out.println("=              5. Phone number           =");
+        System.out.println("=              6. Email                  =");
+        System.out.println("=              7. Address                =");
+        System.out.println("=              8. Role                   =");
+        System.out.println("=              0. Exit                   =");
+        System.out.println("=                                        =");
+        System.out.println("===========================================");
         System.out.println("Enter your choice!");
         System.out.print("==> ");
     }

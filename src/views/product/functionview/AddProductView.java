@@ -13,14 +13,14 @@ public class AddProductView extends ProductTemplate {
         int entryPrice = 0;
         boolean flag = false;
 
-        System.out.println("Add new views.product:");
+        System.out.println("Add new product:");
         System.out.println("----------------");
-        System.out.println("Enter new views.product's name:");
+        System.out.println("Enter new product's name:");
         String name = scanner.nextLine();
 
         do {
             try {
-                System.out.println("Enter new views.product's inventory:");
+                System.out.println("Enter new product's inventory:");
                 inventory = Double.parseDouble(scanner.nextLine());
                 flag = false;
             } catch (Exception e) {
@@ -30,12 +30,12 @@ public class AddProductView extends ProductTemplate {
             }
         } while (flag);
 
-        System.out.println("Enter new views.product's unit:");
+        System.out.println("Enter new product's unit:");
         String unit = scanner.nextLine();
 
         do {
             try {
-                System.out.println("Enter new views.product's entry price:");
+                System.out.println("Enter new product's entry price:");
                 entryPrice = Integer.parseInt(scanner.nextLine());
                 flag = false;
             } catch (NumberFormatException numberFormatException) {
@@ -46,11 +46,11 @@ public class AddProductView extends ProductTemplate {
         } while (flag);
 
 
-        System.out.println("Enter new views.product's supplier:");
+        System.out.println("Enter new product's supplier:");
         String supplier = scanner.nextLine();
 
         Product newProduct = new Product(name, inventory, unit, entryPrice, supplier);
         productManagement.addProduct(newProduct);
-        System.out.println(newProduct);
+        showProduct(newProduct);
     }
 }

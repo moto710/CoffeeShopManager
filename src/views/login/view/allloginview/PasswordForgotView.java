@@ -6,19 +6,19 @@ import models.User;
 
 import java.util.List;
 
-public class PasswordFogotView extends LoginTemplate {
-    public PasswordFogotView(){
+public class PasswordForgotView extends LoginTemplate {
+    public PasswordForgotView(){
 
     }
         @Override
     protected void showBody() {
         List<User> userList = UserService.findAll();
-        System.out.println("Enter your views.user name");
+        System.out.println("Enter your user name");
         System.out.printf("===>");
         String userName = scanner.nextLine();
 
         for(User user: userList){
-            User temp = new User();
+            User temp;
             if (user.getUserName().equals(userName)) {
                 temp = user;
 

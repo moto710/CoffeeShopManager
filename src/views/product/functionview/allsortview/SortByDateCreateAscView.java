@@ -16,6 +16,6 @@ public class SortByDateCreateAscView extends ProductTemplate {
         comparator = new ComparatorByDateCreate();
         List<Product> products = productManagement.findAll();
         Collections.sort(products, comparator);
-        showProduct(products);
+        showProductList(products);
     }
 }

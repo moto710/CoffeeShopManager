@@ -25,7 +25,7 @@ public class SearchCustomerView extends CustomerTemplate {
                     SearchCustomerByEmailView searchProductByInventoryView = new SearchCustomerByEmailView();
                     break;
                 case 4:
-                    SearchCustomerByaddressView searchProductByUnitView = new SearchCustomerByaddressView();
+                    SearchCustomerByAddressView searchProductByUnitView = new SearchCustomerByAddressView();
                     break;
                 case 5:
                     SearchCustomerByPhoneView searchProductByEntryPriceView = new SearchCustomerByPhoneView();
@@ -40,15 +40,17 @@ public class SearchCustomerView extends CustomerTemplate {
         } while (flag);
     }
     protected void menuSearchView() {
-        System.out.println("Search views.customer by:");
-        System.out.println("------------------\n");
-        System.out.println("1. ID:");
-        System.out.println("2. Name:");
-        System.out.println("3. email:");
-        System.out.println("4. address:");
-        System.out.println("5. phone:");
-        System.out.println("0. Exit!");
-        System.out.println("Enter your choice!");
-        System.out.print("==> ");
+        System.out.println("=========== Search customer by =============");
+        System.out.println("=                                          =");
+        System.out.println("=                1. ID                     =");
+        System.out.println("=                2. Name                   =");
+        System.out.println("=                3. Email                  =");
+        System.out.println("=                4. Address                =");
+        System.out.println("=                5. Phone                  =");
+        System.out.println("=                0. Exit!                  =");
+        System.out.println("=                                          =");
+        System.out.println("============================================");
+        System.out.println("Choose function to show!");
+        System.out.print("===>");
     }
 }

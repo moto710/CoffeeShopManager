@@ -12,15 +12,15 @@ public class RemoveProductView extends ProductTemplate {
     protected void showBody() {
         boolean flag = false;
         do {
-            System.out.println("Please enter views.product's id to remove:");
+            System.out.println("Please enter product's id to remove:");
             Long id = Long.parseLong(scanner.nextLine());
             Product temp = productManagement.searchId(id);
 
             if (temp == null) {
-                System.out.println("The views.product with id = " + id + " does not exist!");
+                System.out.println("The product with id = " + id + " does not exist!");
                 flag = true;
             } else {
-                System.out.println("Are you sure to remove this views.product? (Y/N)");
+                System.out.println("Are you sure to remove this product? (Y/N)");
                 String comfirm = scanner.nextLine();
                 switch (comfirm) {
                     case "Y":

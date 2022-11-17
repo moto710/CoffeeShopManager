@@ -37,7 +37,7 @@ public class User {
         this.dateUpdate = formatDateToString(new Date());
     }
     public User(String userName, String password, String fullName, String phone, String email, String address) {
-        this.id = System.currentTimeMillis() / 1000000;
+        this.id = System.currentTimeMillis() % 1000000;
         this.userName = userName;
         this.password = password;
         this.fullName = fullName;

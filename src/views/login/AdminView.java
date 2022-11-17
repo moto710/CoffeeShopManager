@@ -1,6 +1,7 @@
 package views.login;
 
 import models.User;
+import views.login.view.allloginview.ShowUsersView;
 import views.user.functionview.*;
 import viewtemplate.UserTemplate;
 
@@ -12,8 +13,8 @@ public class AdminView extends UserTemplate {
     }
     @Override
     protected void showBody() {
-        boolean flag = true;
-        List<User> userList = userManagement.findAll();
+        boolean flag = false;
+        List<User> userList = userService.findAll();
 
         do {
             try {
@@ -22,7 +23,7 @@ public class AdminView extends UserTemplate {
 
                 switch (choice) {
                     case 1:
-                        userManagement.renderUser();
+                        ShowUsersView showUsersView = new ShowUsersView();
                         break;
                     case 2:
                         CreateNewUserView createNewUserView = new CreateNewUserView();
@@ -44,14 +45,15 @@ public class AdminView extends UserTemplate {
                         break;
                     default:
                         System.out.println("Wrong input, try again!");
-//                        flag = true;
+                        flag = true;
                         break;
                 }
             } catch (Exception e) {
                 System.err.println("Wrong input, try again!!!!!");
-//                flag = true;
+                e.printStackTrace();
+                flag = true;
             }
-        } while (flag);
+        } while (true);
     }
     public void menuProductView() {
         System.out.println("================== ADMIN MANAGE ===================");

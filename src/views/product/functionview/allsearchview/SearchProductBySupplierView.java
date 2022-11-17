@@ -8,12 +8,12 @@ public class SearchProductBySupplierView extends ProductTemplate {
     }
     @Override
     protected void showBody() {
-        System.out.println("Enter views.product's supplier to search:");
+        System.out.println("Enter product's supplier to search:");
         String supplier = scanner.nextLine();
         if (productManagement.searchSupplier(supplier) == null) {
-            System.out.println("Don't have any views.product with this supplier: " + supplier);
+            System.out.println("Don't have any product with this supplier: " + supplier);
         } else {
-            showProduct(productManagement.searchSupplier(supplier));
+            showProductList(productManagement.searchSupplier(supplier));
         }
     }
 }

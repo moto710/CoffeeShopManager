@@ -250,6 +250,13 @@ public class UserService {
         }
         return sameRole;
     }
-
+    public static List<User> getUsers() {
+        List<User> users = new ArrayList<>();
+        List<String> records = ReadWriteFile.read(USER_LIST_PATH.getPath());
+        for (String record : records) {
+            users.add(User.parseUser(record));
+        }
+        return users;
+    }
 
 }

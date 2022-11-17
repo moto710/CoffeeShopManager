@@ -1,9 +1,10 @@
 package views.login;
 
+import views.CustomerView;
 import views.login.view.LoginTemplate;
 import views.ProductView;
 
-public class UserView extends LoginTemplate {
+public class AllAdminManage extends LoginTemplate {
 
     @Override
     protected void showBody() {
@@ -13,12 +14,15 @@ public class UserView extends LoginTemplate {
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
-                    UserView userView = new UserView();
+                    AdminView adminView = new AdminView();
                     break;
                 case 2:
                     ProductView productView = new ProductView();
                     break;
-                case 3: //manage cart
+                case 3:
+                    CustomerView customerView = new CustomerView();
+                    break;
+                case 4: //manage cart
                     break;
                 case 0: //exit
                     break;
@@ -33,7 +37,8 @@ public class UserView extends LoginTemplate {
         System.out.println("=                                                =");
         System.out.println("=              1. Manage User                    =");
         System.out.println("=              2. Manage Product                 =");
-        System.out.println("=              3. Manage Cart                    =");
+        System.out.println("=              3. Manage Customer                =");
+        System.out.println("=              4. Manage Cart                    =");
         System.out.println("=              0. Exit!                          =");
         System.out.println("=                                                =");
         System.out.println("==================================================");

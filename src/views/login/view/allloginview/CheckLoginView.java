@@ -1,6 +1,7 @@
 package views.login.view.allloginview;
 
 import views.login.AdminView;
+import views.login.AllAdminManage;
 import views.login.view.LoginTemplate;
 import service.UserService;
 import models.User;
@@ -9,7 +10,6 @@ import java.util.List;
 
 public class CheckLoginView extends LoginTemplate {
     public CheckLoginView() {
-//        showPage();
     }
 
     @Override
@@ -32,7 +32,9 @@ public class CheckLoginView extends LoginTemplate {
                     if (checkRole.equals("ADMIN")) {
                         System.out.println("Welcome back, admin!");
                         System.out.println("Hello " + user.getFullName());
-                        AdminView adminView = new AdminView();
+                        AllAdminManage allAdminManage = new AllAdminManage();
+
+//                        AdminView adminView = new AdminView();
                         flag = false;
                         break;
                     }

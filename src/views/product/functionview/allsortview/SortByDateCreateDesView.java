@@ -17,6 +17,6 @@ public class SortByDateCreateDesView extends ProductTemplate {
         List<Product> products = productManagement.findAll();
         Collections.sort(products, comparator);
         Collections.reverse(products);
-        showProduct(products);
+        showProductList(products);
     }
 }

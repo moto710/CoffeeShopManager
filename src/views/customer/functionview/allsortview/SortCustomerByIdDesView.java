@@ -1,6 +1,7 @@
 package views.customer.functionview.allsortview;
 
 import models.Customer;
+import service.CustomerService;
 import views.customer.sort.CompareCustomerId;
 import viewtemplate.CustomerTemplate;
 
@@ -14,9 +15,9 @@ public class SortCustomerByIdDesView extends CustomerTemplate {
     @Override
     protected void showBody() {
         comparator = new CompareCustomerId();
-        List<Customer> customers = customerManagement.findAll();
-        Collections.sort(customers, comparator);
+        List<Customer> customers = CustomerService.findAll();
+        customers.sort(comparator);
         Collections.reverse(customers);
-        showCustomer(customers);
+        showCustomerList(customers);
     }
 }
