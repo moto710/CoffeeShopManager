@@ -1,6 +1,6 @@
 package Main;
 
-import login.AdminView;
+import views.login.AdminView;
 
 public class Main {
     public static void main(String[] args) {
