@@ -1,6 +1,7 @@
 package views;
 
 import views.customer.functionview.*;
+import views.login.AllAdminManage;
 import viewtemplate.CustomerTemplate;
 
 public class CustomerView extends CustomerTemplate {
@@ -9,7 +10,7 @@ public class CustomerView extends CustomerTemplate {
     }
     @Override
     protected void showBody() {
-        boolean flag = true;
+        boolean flag = false;
         do {
             try {
                 menuCustomerView();
@@ -35,17 +36,19 @@ public class CustomerView extends CustomerTemplate {
                         SortCustomerView sortProductView = new SortCustomerView();
                         break;
                     case 0:
-                        flag = false;
+                        AllAdminManage allAdminManage = new AllAdminManage();
                         break;
                     default:
                         System.out.println("Wrong input, try again!");
+                        flag = false;
                         break;
                 }
             } catch (Exception e) {
                 System.err.println("Wrong input, try again!!!!!");
+                flag = true;
                 e.printStackTrace();
             }
-        } while (flag == true);
+        } while (flag);
 
     }
     public void menuCustomerView() {

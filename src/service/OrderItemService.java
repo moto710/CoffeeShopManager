@@ -77,7 +77,7 @@ public class OrderItemService {
         List<OrderItem> list = findAll();
         OrderItem temp = new OrderItem();
         for (OrderItem item : list) {
-            if (item.getId() == id) {
+            if (item.getIdOrderItem() == id) {
                 temp = item;
                 break;
             }
@@ -87,19 +87,13 @@ public class OrderItemService {
     public void removeOrderItem(long id) {
         List<OrderItem> list = findAll();
         list.remove(findIdOrderItem(id));
-//        for (int i = 0; i < list.size(); i++) {
-//            if (list.get(i).getId() == id) {
-//                list.remove(i);
-//                break;
-//            }
-//        }
         ReadWriteFile.write(ORDER_ITEM_PATH.getPath(), list);
     }
 
-    public void editOrderItemQuantity(long id, float quantity) {
+    public void editOrderItemQuantity(long id, long quantity) {
         List<OrderItem> list = findAll();
         for (OrderItem item : list) {
-            if (item.getId() == id) {
+            if (item.getIdOrderItem() == id) {
                 item.setQuantity(quantity);
                 break;
             }
@@ -107,15 +101,13 @@ public class OrderItemService {
         ReadWriteFile.write(ORDER_ITEM_PATH.getPath(), list);
     }
 
-    public void swapOrderItemProduct(long idOrderItem, long idOtherProduct) {
-        List<OrderItem> list = findAll();
-        for (OrderItem item : list) {
-            if (item.getId() == idOrderItem) {
-                item.setProduct(productManagement.searchId(idOtherProduct));
-            }
-        }
-//        OrderItem orderItem = findIdOrderItem(idOrderItem);
-//        orderItem.setProduct(productManagement.searchId(idOtherProduct));
-        ReadWriteFile.write(ORDER_ITEM_PATH.getPath(), list);
-    }
+//    public void swapOrderItemProduct(long idOrderItem, long idOtherProduct) {
+//        List<OrderItem> list = findAll();
+//        for (OrderItem item : list) {
+//            if (item.getIdOrderItem() == idOrderItem) {
+//                item.setProduct(productManagement.searchId(idOtherProduct));
+//            }
+//        }
+//        ReadWriteFile.write(ORDER_ITEM_PATH.getPath(), list);
+//    }
 }

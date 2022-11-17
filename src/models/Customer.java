@@ -6,7 +6,7 @@ import java.util.Date;
 import static utils.DateUtils.formatDateToString;
 
 public class Customer {
-    private long id;
+    private long idCustomer;
     private String fullName;
     private String email;
     private String address;
@@ -20,7 +20,7 @@ public class Customer {
 
     public Customer(long id, String fullName, String email, String address, String phone, String dateCreate,
                     String dateUpdate) {
-        this.id = id;
+        this.idCustomer = id;
         this.fullName = fullName;
         this.email = email;
         this.address = address;
@@ -29,7 +29,7 @@ public class Customer {
         this.dateUpdate = dateUpdate;
     }
     public Customer(String fullName, String email, String address, String phone) {
-        this.id = System.currentTimeMillis()%1000000;
+        this.idCustomer = System.currentTimeMillis()%1000000;
         this.fullName = fullName;
         this.email = email;
         this.address = address;
@@ -38,12 +38,12 @@ public class Customer {
         this.dateUpdate = formatDateToString(new Date());
     }
 
-    public long getId() {
-        return id;
+    public long getIdCustomer() {
+        return idCustomer;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setIdCustomer(long idCustomer) {
+        this.idCustomer = idCustomer;
     }
 
     public String getFullName() {
@@ -96,7 +96,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return String.format("%s,%s,%s,%s,%s,%s,%s", id, fullName, email, address, phone, dateCreate, dateUpdate);
+        return String.format("%s,%s,%s,%s,%s,%s,%s", idCustomer, fullName, email, address, phone, dateCreate, dateUpdate);
     }
     public static Customer parseCustomer(String raw) {
         String[] fields = raw.split(",");

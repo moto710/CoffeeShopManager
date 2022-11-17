@@ -91,7 +91,7 @@ public class CustomerService {
         List<Customer> customers = findAll();
         Customer temp = null;
         for (int i = 0; i < customers.size(); i++) {
-            if (customers.get(i).getId() == id) {
+            if (customers.get(i).getIdCustomer() == id) {
                 temp = customers.get(i);
                 break;
             }
@@ -101,7 +101,7 @@ public class CustomerService {
     public static void editCustomerName(long id, String name) {
         List<Customer> customers = findAll();
         for (int i = 0; i < customers.size(); i++) {
-            if (customers.get(i).getId() == id) {
+            if (customers.get(i).getIdCustomer() == id) {
                 customers.get(i).setFullName(name);
                 customers.get(i).setDateUpdate(formatDateToString(new Date()));
                 break;
@@ -112,7 +112,7 @@ public class CustomerService {
     public static void editCustomerEmail(long id, String email) {
         List<Customer> customers = findAll();
         for (int i = 0; i < customers.size(); i++) {
-            if (customers.get(i).getId() == id) {
+            if (customers.get(i).getIdCustomer() == id) {
                 customers.get(i).setEmail(email);
                 customers.get(i).setDateUpdate(formatDateToString(new Date()));
                 break;
@@ -123,7 +123,7 @@ public class CustomerService {
     public static void editCustomerAddress(long id, String address) {
         List<Customer> customers = findAll();
         for (int i = 0; i < customers.size(); i++) {
-            if (customers.get(i).getId() == id) {
+            if (customers.get(i).getIdCustomer() == id) {
                 customers.get(i).setEmail(address);
                 customers.get(i).setDateUpdate(formatDateToString(new Date()));
                 break;
@@ -134,7 +134,7 @@ public class CustomerService {
     public static void editCustomerPhone(long id, String phone) {
         List<Customer> customers = findAll();
         for (int i = 0; i < customers.size(); i++) {
-            if (customers.get(i).getId() == id) {
+            if (customers.get(i).getIdCustomer() == id) {
                 customers.get(i).setPhone(phone);
                 customers.get(i).setDateUpdate(formatDateToString(new Date()));
                 break;

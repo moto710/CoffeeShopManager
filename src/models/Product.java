@@ -41,6 +41,7 @@ public class Product {
         this.dateUpdate = dateUpdate;
     }
 
+
     public String getUnit() {
         return unit;
     }

@@ -41,7 +41,7 @@ public class AdminView extends UserTemplate {
                         SortUserView sortProductView = new SortUserView();
                         break;
                     case 0:
-                        System.exit(0);
+                        AllAdminManage allAdminManage = new AllAdminManage();
                         break;
                     default:
                         System.out.println("Wrong input, try again!");

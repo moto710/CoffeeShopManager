@@ -80,7 +80,7 @@ public class CartService {
         List<Cart> list = findAll();
         Cart temp = new Cart();
         for (Cart item : list) {
-            if (item.getId() == id) {
+            if (item.getIdCart() == id) {
                 temp = item;
                 break;
             }

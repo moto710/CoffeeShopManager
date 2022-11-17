@@ -1,5 +1,6 @@
 package views;
 
+import views.login.AllAdminManage;
 import views.product.functionview.*;
 import viewtemplate.ProductTemplate;
 
@@ -10,7 +11,7 @@ public class ProductView extends ProductTemplate {
     }
     @Override
     protected void showBody() {
-        boolean flag = true;
+        boolean flag = false;
         do {
             try {
                 menuProductView();
@@ -36,17 +37,19 @@ public class ProductView extends ProductTemplate {
                         SortProductView sortProductView = new SortProductView();
                         break;
                     case 0:
-                        flag = false;
+                        AllAdminManage allAdminManage = new AllAdminManage();
                         break;
                     default:
                         System.out.println("Wrong input, try again!");
+                        flag = true;
                         break;
                 }
             } catch (Exception e) {
                 System.err.println("Wrong input, try again!!!!!");
+                flag = true;
                 e.printStackTrace();
             }
-        } while (flag == true);
+        } while (flag);
     }
     public void menuProductView() {
         System.out.println("=========== Choose product's function to show =============");

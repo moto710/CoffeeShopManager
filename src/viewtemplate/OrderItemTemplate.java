@@ -2,7 +2,6 @@ package viewtemplate;
 
 import models.OrderItem;
 import service.OrderItemService;
-import viewtemplate.ViewTemplate;
 
 import java.util.Comparator;
 import java.util.List;
@@ -11,12 +10,24 @@ public abstract class OrderItemTemplate extends ViewTemplate {
     protected static OrderItemService orderItemManagement;
 
     protected Comparator<OrderItem> comparator;
-    protected OrderItemTemplate(){
+
+    protected OrderItemTemplate() {
         orderItemManagement = new OrderItemService();
     }
-    public static void showOrderItem(List<OrderItem> orderItemList){
-        for (OrderItem orderItem : orderItemList) {
-            System.out.println(orderItem.toString());
+
+    public static void showOrderItemList(List<OrderItem> orderItemList) {
+        System.out.println("========================================================================= ORDER ITEM LIST ============================================================================\n");
+        System.out.printf("|%-12s| |%-12s| | %-18s |  | %-16s | \n", "ID", "ID Product", "Quantity", "Total" + "\n");
+        for (OrderItem item : orderItemList) {
+            System.out.printf("|%-12s| |%-12s| | %-18s |  | %-16s | \n", item.getIdOrderItem(), item.getIdProduct(), item.getQuantity(), item.getTotal());
         }
+        System.out.println("======================================================================================================================================================================");
+    }
+
+    public static void showOrderItem(OrderItem orderItem) {
+        System.out.println("========================================================================= ORDER ITEM LIST ============================================================================\n");
+        System.out.printf("|%-12s| |%-12s| | %-18s |  | %-16s | \n", "ID", "ID Product", "Quantity", "Total" + "\n");
+        System.out.printf("|%-12s| |%-12s| | %-18s |  | %-16s | \n", orderItem.getIdOrderItem(), orderItem.getIdProduct(), orderItem.getQuantity(), orderItem.getTotal());
+        System.out.println("======================================================================================================================================================================");
     }
 }

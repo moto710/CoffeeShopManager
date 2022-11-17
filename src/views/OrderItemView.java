@@ -1,8 +1,6 @@
 package views;
 
-import views.order.functionview.AddOrderItemView;
-import views.order.functionview.EditOrderItemView;
-import views.order.functionview.RemoveOrderItemView;
+import views.orderitem.*;
 import viewtemplate.OrderItemTemplate;
 
 public class OrderItemView extends OrderItemTemplate {
@@ -19,7 +17,7 @@ public class OrderItemView extends OrderItemTemplate {
 
                 switch (choice) {
                     case 1:
-                        orderItemManagement.renderOrderItem();
+                        ShowAllOrderItem showAllOrderItem = new ShowAllOrderItem();
                         break;
                     case 2:
                         AddOrderItemView addOrderItemView = new AddOrderItemView();
@@ -44,11 +42,16 @@ public class OrderItemView extends OrderItemTemplate {
         } while (flag == true);
     }
     public void menuView() {
-        System.out.println("Choose views.product's function to show:\n");
-        System.out.println("1. Show all views.order item:");
-        System.out.println("2. Add one views.order item:");
-        System.out.println("3. Edit a views.order item:");
-        System.out.println("4. Remove a views.order item:");
-        System.out.println("0. Exit!");
+        System.out.println("================= ORDER ITEM ===================");
+        System.out.println("=                                              =");
+        System.out.println("=           1. Show all order item             =");
+        System.out.println("=           2. Add one order item              =");
+        System.out.println("=           3. Edit a order item               =");
+        System.out.println("=           4. Remove order item              =");
+        System.out.println("=           0. Exit!                           =");
+        System.out.println("=                                              =");
+        System.out.println("================================================");
+        System.out.println("Choose function to show!");
+        System.out.print("===>");
     }
 }

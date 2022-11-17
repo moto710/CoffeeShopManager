@@ -19,7 +19,7 @@ public abstract class CustomerTemplate extends ViewTemplate {
         System.out.println("========================================================================= CUSTOMER LIST ====================================================================================\n");
         System.out.printf("|%-12s| | %-18s |  | %-16s | %-20s | %-15s |  | %-20s |  | %-20s |\n", "ID", "Name", "Email", "Address", "Phone Number", "Date Create", "Date Update" + "\n");
         for (Customer customer : customerList) {
-            System.out.printf("|%-12s| | %-18s |  | %-16s | %-20s | %-15s |  | %-20s |  | %-20s |\n", customer.getId(), customer.getFullName(), customer.getEmail(), customer.getAddress(), customer.getPhone(), customer.getDateCreate(), customer.getDateUpdate());
+            System.out.printf("|%-12s| | %-18s |  | %-16s | %-20s | %-15s |  | %-20s |  | %-20s |\n", customer.getIdCustomer(), customer.getFullName(), customer.getEmail(), customer.getAddress(), customer.getPhone(), customer.getDateCreate(), customer.getDateUpdate());
         }
         System.out.println("=========================================================================================================================================================================");
     }
@@ -28,7 +28,7 @@ public abstract class CustomerTemplate extends ViewTemplate {
         System.out.println("========================================================================= CUSTOMER ====================================================================================\n");
         System.out.printf("|%-12s| | %-18s |  | %-16s | %-20s | %-15s |  | %-20s |  | %-20s |\n", "ID", "Name", "Email", "Address", "Phone Number", "Date Create", "Date Update" + "\n");
 
-        System.out.printf("|%-12s| | %-18s |  | %-16s | %-20s | %-15s |  | %-20s |  | %-20s |\n", customer.getId(), customer.getFullName(), customer.getEmail(), customer.getAddress(), customer.getPhone(), customer.getDateCreate(), customer.getDateUpdate());
+        System.out.printf("|%-12s| | %-18s |  | %-16s | %-20s | %-15s |  | %-20s |  | %-20s |\n", customer.getIdCustomer(), customer.getFullName(), customer.getEmail(), customer.getAddress(), customer.getPhone(), customer.getDateCreate(), customer.getDateUpdate());
 
         System.out.println("=========================================================================================================================================================================");
     }

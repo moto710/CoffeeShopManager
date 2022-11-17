@@ -1,4 +1,4 @@
-package views.order.functionview;
+package views;
 
 import viewtemplate.CartTemplate;
 

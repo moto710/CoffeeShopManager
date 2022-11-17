@@ -1,71 +1,76 @@
 package models;
 
-import static models.Product.parseProduct;
+import service.ProductService;
 
 public class OrderItem {
-    private long id;
-    private Product product;
-    private float quantity;
-    private double total;
+    private long idOrderItem;
+    private long idProduct;
+    private long quantity;
+    private long total;
     public OrderItem() {
     }
 
-    public OrderItem(long id, Product product, float quantity, double total) {
-        this.id = id;
-        this.product = product;
+    public OrderItem(long idOrderItem, long idProduct, long quantity, long total) {
+        this.idOrderItem = idOrderItem;
+        this.idProduct = idProduct;
         this.quantity = quantity;
         this.total = total;
     }
-    public OrderItem(Product product, float quantity) {
-        this.id = System.currentTimeMillis()%1000000;
-        this.product = product;
+    public OrderItem(long idProduct, long quantity) {
+        this.idOrderItem = System.currentTimeMillis()%1000000;
+        this.idProduct = idProduct;
         this.quantity = quantity;
-        this.total = quantity * product.getPrice();
+        this.total = (long) (quantity * ProductService.getProduct(idProduct).getPrice());
     }
 
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
 
     public double getTotal() {
         return total;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(long total) {
         this.total = total;
     }
 
-    public void setQuantity(float quantity) {
+    public void setQuantity(long quantity) {
         this.quantity = quantity;
     }
-    public float getQuantity() {
+    public long getQuantity() {
         return quantity;
     }
 
-    public Long getId() {
-        return id;
+    public void setIdOrderItem(long idOrderItem) {
+        this.idOrderItem = idOrderItem;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public long getIdProduct() {
+        return idProduct;
+    }
+
+    public void setIdProduct(long idProduct) {
+        this.idProduct = idProduct;
+    }
+
+    public Long getIdOrderItem() {
+        return idOrderItem;
+    }
+
+    public void setIdOrderItem(Long idOrderItem) {
+        this.idOrderItem = idOrderItem;
     }
 
     @Override
     public String toString() {
-        return String.format("%s,%s,%s,%s", id, product, quantity, total);
+        return String.format("%s,%s,%s,%s", idOrderItem, idProduct, quantity, total);
     }
     public static OrderItem parseOrderItem(String raw) {
         String[] fields = raw.split(",");
         long id = Long.parseLong(fields[0]);
-        Product product = parseProduct(fields[1]);
-        float quantity = Float.parseFloat(fields[2]);
-        double total = Double.parseDouble(fields[3]);
+        long idProduct = Long.parseLong(fields[1]);
+        long quantity = Long.parseLong(fields[2]);
+        long total = Long.parseLong(fields[3]);
 
-        OrderItem orderItem = new OrderItem(id, product, quantity, total);
+        OrderItem orderItem = new OrderItem(id, idProduct, quantity, total);
 
         return orderItem;
     }

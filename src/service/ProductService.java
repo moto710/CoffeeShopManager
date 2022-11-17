@@ -37,6 +37,7 @@ public class ProductService {
         }
         return productList;
     }
+
     public static void renderProduct() {
         BufferedReader br = null;
         try {
@@ -79,15 +80,17 @@ public class ProductService {
         ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), products);
     }
 
-//    public static Product getProduct(long id) {
-//        List<Product> products = findAll();
-//        Product temp =
-//        for (Product views.product : products) {
-//            if (views.product.getId() == id) {
-//
-//            }
-//        }
-//    }
+    public static Product getProduct(long id) {
+        List<Product> products = findAll();
+        Product temp = new Product();
+        for (Product product : products) {
+            if (product.getId() == id) {
+                temp = product;
+                break;
+            }
+        }
+        return temp;
+    }
 
     public static void editProductName(long id, String name) {
         List<Product> products = findAll();
@@ -100,6 +103,7 @@ public class ProductService {
         }
         ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), products);
     }
+
     public void editProductInventory(long id, double inventory) {
         List<Product> products = findAll();
         for (int i = 0; i < products.size(); i++) {
@@ -111,6 +115,7 @@ public class ProductService {
         }
         ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), products);
     }
+
     public void editProductUnit(long id, String unit) {
         List<Product> products = findAll();
         for (int i = 0; i < products.size(); i++) {
@@ -122,6 +127,7 @@ public class ProductService {
         }
         ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), products);
     }
+
     public void editProductPrice(long id, double price) {
         List<Product> products = findAll();
         for (int i = 0; i < products.size(); i++) {
@@ -133,6 +139,7 @@ public class ProductService {
         }
         ReadWriteFile.write(PRODUCT_LIST_PATH.getPath(), products);
     }
+
     public void editProductSupplier(long id, String supplier) {
         List<Product> products = findAll();
         for (int i = 0; i < products.size(); i++) {

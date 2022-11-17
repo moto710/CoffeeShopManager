@@ -2,7 +2,6 @@ package views.login;
 
 import views.login.view.allloginview.*;
 import views.login.view.LoginTemplate;
-import views.user.functionview.CreateNewUserView;
 
 public class LoginView extends LoginTemplate {
     public LoginView() {

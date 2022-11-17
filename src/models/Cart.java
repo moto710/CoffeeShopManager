@@ -4,20 +4,22 @@ import java.util.Date;
 
 import static models.OrderItem.parseOrderItem;
 import static utils.DateUtils.formatDateToString;
+import static utils.DateUtils.parseStringToDate;
 
 public class Cart {
-    private long id;
-    private OrderItem orderItem;
-    private int totalOrderItem;
-    private double grandTotal;
+    private long idCart;
+    private long idOrderItem;
+    private long totalOrderItem;
+    private long grandTotal;
     private String dateCreate;
     private String dateUpdate;
 
-    public OrderItem getOrderItem() {
-        return orderItem;
+
+    public void setTotalOrderItem(long totalOrderItem) {
+        this.totalOrderItem = totalOrderItem;
     }
 
-    public int getTotalOrderItem() {
+    public long getTotalOrderItem() {
         return totalOrderItem;
     }
 
@@ -25,20 +27,16 @@ public class Cart {
         return grandTotal;
     }
 
-    public void setGrandTotal(double grandTotal) {
+    public void setGrandTotal(long grandTotal) {
         this.grandTotal = grandTotal;
     }
 
-    public long getId() {
-        return id;
+    public long getIdCart() {
+        return idCart;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setOrderItem(OrderItem orderItem) {
-        this.orderItem = orderItem;
+    public void setIdCart(long idCart) {
+        this.idCart = idCart;
     }
 
     public void setTotalOrderItem(int totalOrderItem) {
@@ -61,41 +59,50 @@ public class Cart {
         this.dateUpdate = dateUpdate;
     }
 
+    public long getIdOrderItem() {
+        return idOrderItem;
+    }
+
+    public void setIdOrderItem(long idOrderItem) {
+        this.idOrderItem = idOrderItem;
+    }
+
     public Cart() {
     }
 
-    public Cart(long id, OrderItem orderItem, int totalOrderItem, double grandTotal, String dateCreate, String dateUpdate) {
-        this.id = id;
-        this.orderItem = orderItem;
+
+    public Cart(long idCart, long idOrderItem, long totalOrderItem, long grandTotal, String dateCreate, String dateUpdate) {
+        this.idCart = idCart;
+        this.idOrderItem = idOrderItem;
         this.totalOrderItem = totalOrderItem;
         this.grandTotal = grandTotal;
         this.dateCreate = dateCreate;
         this.dateUpdate = dateUpdate;
     }
-    public Cart(OrderItem orderItem) {
-        this.id = System.currentTimeMillis()%1000000;
-        this.orderItem = orderItem;
-        this.totalOrderItem = (int) orderItem.getQuantity();
-        this.grandTotal = orderItem.getTotal();
+    public Cart(long idOrderItem, long totalOrderItem, long grandTotal) {
+        this.idCart = System.currentTimeMillis()%1000000;
+        this.idOrderItem = idOrderItem;
+        this.totalOrderItem = totalOrderItem;
+        this.grandTotal = grandTotal;
         this.dateCreate = formatDateToString(new Date());
         this.dateUpdate = formatDateToString(new Date());
     }
     public static Cart ParseCart(String raw) {
         String[] fields = raw.split(",");
-        long id = Long.parseLong(fields[0]);
-        OrderItem orderItemList = parseOrderItem(fields[1]);
-        int totalOrderItem = Integer.parseInt(fields[2]);
-        double grandTotal = Double.parseDouble(fields[3]);
+        long idCart = Long.parseLong(fields[0]);
+        long idOrderItem = Long.parseLong(fields[1]);
+        long totalOrderItem = Long.parseLong(fields[2]);
+        long grandTotal = Long.parseLong(fields[3]);
         String dateCreate = fields[4];
         String dateUpdate = fields[5];
 
 
-        Cart cart = new Cart(id, orderItemList, totalOrderItem, grandTotal, dateCreate, dateUpdate);
+        Cart cart = new Cart(idCart, idOrderItem, totalOrderItem, grandTotal, dateCreate, dateUpdate);
 
         return cart;
     }
     @Override
     public String toString() {
-        return String.format("%s,%s,%s,%s",id, orderItem, totalOrderItem, grandTotal, dateCreate, dateUpdate);
+        return String.format("%s,%s,%s,%s", idCart, idOrderItem, totalOrderItem, grandTotal, dateCreate, dateUpdate);
     }
 }
