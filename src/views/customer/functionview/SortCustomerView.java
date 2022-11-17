@@ -2,7 +2,6 @@ package views.customer.functionview;
 
 import views.customer.functionview.allsortview.*;
 import viewtemplate.CustomerTemplate;
-import views.customer.view.functionview.allsortview.*;
 
 public class SortCustomerView extends CustomerTemplate {
     public SortCustomerView() {

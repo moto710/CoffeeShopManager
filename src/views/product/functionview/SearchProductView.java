@@ -2,7 +2,6 @@ package views.product.functionview;
 
 import views.product.functionview.allsearchview.*;
 import viewtemplate.ProductTemplate;
-import views.product.view.functionview.allsearchview.*;
 
 public class SearchProductView extends ProductTemplate {
     public SearchProductView(){

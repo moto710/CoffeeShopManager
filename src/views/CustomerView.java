@@ -1,7 +1,6 @@
 package views;
 
 import views.customer.functionview.*;
-import views.customer.view.functionview.*;
 import viewtemplate.CustomerTemplate;
 
 public class CustomerView extends CustomerTemplate {

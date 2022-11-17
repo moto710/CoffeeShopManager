@@ -2,7 +2,6 @@ package views;
 
 import views.product.functionview.*;
 import viewtemplate.ProductTemplate;
-import views.product.view.functionview.*;
 
 
 public class ProductView extends ProductTemplate {

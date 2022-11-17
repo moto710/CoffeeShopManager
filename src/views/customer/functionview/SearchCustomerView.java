@@ -2,7 +2,6 @@ package views.customer.functionview;
 
 import views.customer.functionview.allsearchview.*;
 import viewtemplate.CustomerTemplate;
-import views.customer.view.functionview.allsearchview.*;
 
 public class SearchCustomerView extends CustomerTemplate {
     public SearchCustomerView() {

@@ -1,7 +1,7 @@
 package views.login.view.allloginview;
 
-import views.login.view.LoginTemplate;
 import views.login.AdminView;
+import views.login.view.LoginTemplate;
 import service.UserService;
 import models.User;
 
@@ -9,30 +9,31 @@ import java.util.List;
 
 public class CheckLoginView extends LoginTemplate {
     public CheckLoginView() {
-        showPage();
+//        showPage();
     }
 
     @Override
     protected void showBody() {
         List<User> userList = UserService.findAll();
-        int count = 0;
+        boolean flag = false;
         do {
-            System.out.println("Enter your views.user name:");
+            System.out.println("Enter your user name:");
             String userName = scanner.nextLine();
 
             System.out.println("Enter your Password:");
-            String passWord = scanner.nextLine();
+            String password = scanner.nextLine();
 
             for (User user : userList) {
                 String checkUser = user.getUserName();
-                String checkPassWord = user.getPassword();
+                String checkPassword = user.getPassword();
                 String checkRole = user.getRoleAccount().getValue();
 
-                if (checkUser.equals(userName) && checkPassWord.equals(passWord)) {
+                if (checkUser.equals(userName) && checkPassword.equals(password)) {
                     if (checkRole.equals("ADMIN")) {
                         System.out.println("Welcome back, admin!");
                         System.out.println("Hello " + user.getFullName());
                         AdminView adminView = new AdminView();
+                        flag = false;
                         break;
                     }
                     if (checkRole.equals("USER")) {
@@ -52,8 +53,9 @@ public class CheckLoginView extends LoginTemplate {
                     }
                 }else {
                     System.out.println("Something wrong! Try again");
+                    flag = true;
                 }
             }
-        } while (count == 0);
+        } while (flag);
     }
 }

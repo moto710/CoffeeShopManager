@@ -2,7 +2,6 @@ package views.user.functionview;
 
 import views.user.functionview.allsearchview.*;
 import viewtemplate.UserTemplate;
-import views.user.view.functionview.allsearchview.*;
 
 public class SearchUserView extends UserTemplate {
     public SearchUserView(){

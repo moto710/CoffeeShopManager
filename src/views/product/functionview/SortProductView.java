@@ -2,7 +2,6 @@ package views.product.functionview;
 
 import views.product.functionview.allsortview.*;
 import viewtemplate.ProductTemplate;
-import views.product.view.functionview.allsortview.*;
 
 public class SortProductView extends ProductTemplate {
     public SortProductView(){

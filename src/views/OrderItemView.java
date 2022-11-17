@@ -3,7 +3,6 @@ package views;
 import views.order.functionview.AddOrderItemView;
 import views.order.functionview.EditOrderItemView;
 import views.order.functionview.RemoveOrderItemView;
-import views.order.orderitem.orderitemview.functionview.*;
 import viewtemplate.OrderItemTemplate;
 
 public class OrderItemView extends OrderItemTemplate {
