@@ -75,7 +75,7 @@ public class OrderService {
         List<Order> list = findAll();
         Order temp = new Order();
         for (Order item : list) {
-            if (item.getId() == id) {
+            if (item.getIdOrder() == id) {
                 temp = item;
                 break;
             }

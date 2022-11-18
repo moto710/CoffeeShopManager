@@ -39,18 +39,6 @@ public class CheckLoginView extends LoginTemplate {
                         break;
                     }
                     if (checkRole.equals("USER")) {
-//                        List<Order> saveUser = new ArrayList<>();
-//                        Long id = views.user.getId();
-//                        String name = views.user.getFullName();
-//                        String phone = views.user.getPhone();
-//                        String address = views.user.getAddress();
-//                        Instant createAt = Instant.now();
-//                        Order newSaveUser = new Order(id, name, phone, address, createAt);
-//                        saveUser.add(newSaveUser);
-//                        ReadWriteFile.write(SAVE_USER_PATH.getPath(), saveUser);
-//                        System.out.println("Welcome back, views.user!");
-//                        System.out.println("Hello " + views.user.getFullName());
-//                        OptionUser.optionUser();
                         break;
                     }
                 }else {

@@ -75,9 +75,9 @@ public class OrderItemService {
     public static OrderItem findIdOrderItem(long id) {
         List<OrderItem> list = findAll();
         OrderItem temp = new OrderItem();
-        for (OrderItem item : list) {
-            if (item.getIdOrderItem() == id) {
-                temp = item;
+        for (OrderItem orderItem : list) {
+            if (orderItem.getIdOrderItem() == id) {
+                temp = orderItem;
                 break;
             }
         }
@@ -85,7 +85,18 @@ public class OrderItemService {
     }
     public static void removeOrderItem(long id) {
         List<OrderItem> list = findAll();
-        list.remove(findIdOrderItem(id));
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getIdOrderItem() == id) {
+                list.remove(i);
+                break;
+            }
+        }
+//        list.remove(findIdOrderItem(id));
+        ReadWriteFile.write(ORDER_ITEM_PATH.getPath(), list);
+    }
+    public static void removeOrderItem(OrderItem orderItem) {
+        List<OrderItem> list = findAll();
+        list.remove(orderItem);
         ReadWriteFile.write(ORDER_ITEM_PATH.getPath(), list);
     }
 

@@ -1,5 +1,6 @@
 package views;
 
+import views.login.AllAdminManage;
 import views.orderitem.*;
 import viewtemplate.OrderItemTemplate;
 
@@ -29,7 +30,7 @@ public class OrderItemView extends OrderItemTemplate {
                         RemoveOrderItemView removeOrderItemView = new RemoveOrderItemView();
                         break;
                     case 0:
-                        flag = false;
+                        AllAdminManage allAdminManage = new AllAdminManage();
                         break;
                     default:
                         System.out.println("Wrong input, try again!");
