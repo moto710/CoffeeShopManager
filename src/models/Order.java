@@ -13,7 +13,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(Long idOrder, long idCart, long idCustomer, String dateCreate) {
+    public Order(long idOrder, long idCart, long idCustomer, String dateCreate) {
         this.idOrder = idOrder;
         this.idCart = idCart;
         this.idCustomer = idCustomer;

@@ -5,7 +5,7 @@ import java.util.Date;
 import static utils.DateUtils.formatDateToString;
 
 public class Product {
-    private Long id;
+    private long id;
     private String name;
     private double inventory;
     private String unit;
@@ -70,7 +70,7 @@ public class Product {
         this.dateUpdate = dateUpdate;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
@@ -114,8 +114,6 @@ public class Product {
         String dateCreate = fields[6];
         String dateUpdate = fields[7];
 
-        Product product = new Product(id, name, inventory, unit, price, supplier, dateCreate, dateUpdate);
-
-        return product;
+        return new Product(id, name, inventory, unit, price, supplier, dateCreate, dateUpdate);
     }
 }

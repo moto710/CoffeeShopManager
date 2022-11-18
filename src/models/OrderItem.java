@@ -69,14 +69,9 @@ public class OrderItem {
         this.idProduct = idProduct;
     }
 
-    public Long getIdOrderItem() {
+    public long getIdOrderItem() {
         return idOrderItem;
     }
-
-    public void setIdOrderItem(Long idOrderItem) {
-        this.idOrderItem = idOrderItem;
-    }
-
     @Override
     public String toString() {
         return String.format("%s,%s,%s,%s,%s", idOrderItem, idProduct, quantity, total, grandTotal);

@@ -9,7 +9,7 @@ import static enums.RoleAccount.parseRole;
 import static utils.DateUtils.formatDateToString;
 
 public class User {
-    private Long id;
+    private long id;
     private String userName;
     private String password;
     private String fullName;
@@ -25,7 +25,7 @@ public class User {
 
     public User(String userName, String password, String fullName, String phone, String email, String address,
                 RoleAccount role) {
-        this.id = System.currentTimeMillis() / 1000000;
+        this.id = System.currentTimeMillis() % 1000000;
         this.userName = userName;
         this.password = password;
         this.fullName = fullName;
@@ -64,7 +64,7 @@ public class User {
         return user;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
