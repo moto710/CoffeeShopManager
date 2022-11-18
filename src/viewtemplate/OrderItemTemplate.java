@@ -6,6 +6,8 @@ import service.OrderItemService;
 import java.util.Comparator;
 import java.util.List;
 
+import static service.OrderItemService.countGrandTotal;
+
 public abstract class OrderItemTemplate extends ViewTemplate {
     protected static OrderItemService orderItemManagement;
 
@@ -16,12 +18,12 @@ public abstract class OrderItemTemplate extends ViewTemplate {
     }
 
     public static void showOrderItemList(List<OrderItem> orderItemList) {
-        System.out.println("========================================================================= ORDER ITEM LIST ============================================================================\n");
-        System.out.printf("|%-12s| |%-12s| | %-18s |  | %-16s | \n", "ID", "ID Product", "Quantity", "Total" + "\n");
+        System.out.println("=========================================== ORDER ITEM LIST ========================================================\n");
+        System.out.printf("|%-12s| |%-12s| | %-18s |  | %-16s |  \n", "ID", "ID Product", "Quantity", "Total" , "\n");
         for (OrderItem item : orderItemList) {
-            System.out.printf("|%-12s| |%-12s| | %-18s |  | %-16s | \n", item.getIdOrderItem(), item.getIdProduct(), item.getQuantity(), item.getTotal());
+            System.out.printf("|%-12s| |%-12s| | %-18s |  | %-16s |  \n", item.getIdOrderItem(), item.getIdProduct(), item.getQuantity(), item.getTotal());
         }
-        System.out.println("======================================================================================================================================================================");
+        System.out.println("\n========================================== Grand Total: " + countGrandTotal() + "==============================================");
     }
 
     public static void showOrderItem(OrderItem orderItem) {

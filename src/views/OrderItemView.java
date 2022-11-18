@@ -47,7 +47,7 @@ public class OrderItemView extends OrderItemTemplate {
         System.out.println("=           1. Show all order item             =");
         System.out.println("=           2. Add one order item              =");
         System.out.println("=           3. Edit a order item               =");
-        System.out.println("=           4. Remove order item              =");
+        System.out.println("=           4. Remove order item               =");
         System.out.println("=           0. Exit!                           =");
         System.out.println("=                                              =");
         System.out.println("================================================");

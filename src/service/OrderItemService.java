@@ -7,7 +7,6 @@ import java.io.*;
 import java.util.*;
 
 import static enums.FilePath.ORDER_ITEM_PATH;
-import static viewtemplate.ProductTemplate.productManagement;
 
 
 public class OrderItemService {
@@ -73,7 +72,7 @@ public class OrderItemService {
         orderItems.add(orderItem);
         ReadWriteFile.write(ORDER_ITEM_PATH.getPath(), orderItems);
     }
-    public OrderItem findIdOrderItem(long id) {
+    public static OrderItem findIdOrderItem(long id) {
         List<OrderItem> list = findAll();
         OrderItem temp = new OrderItem();
         for (OrderItem item : list) {
@@ -84,7 +83,7 @@ public class OrderItemService {
         }
         return temp;
     }
-    public void removeOrderItem(long id) {
+    public static void removeOrderItem(long id) {
         List<OrderItem> list = findAll();
         list.remove(findIdOrderItem(id));
         ReadWriteFile.write(ORDER_ITEM_PATH.getPath(), list);
@@ -99,6 +98,15 @@ public class OrderItemService {
             }
         }
         ReadWriteFile.write(ORDER_ITEM_PATH.getPath(), list);
+    }
+
+    public static long countGrandTotal() {
+        List<OrderItem> orderItems = findAll();
+        long grandTotal = 0;
+        for (OrderItem item : orderItems) {
+            grandTotal += item.getTotal();
+        }
+        return  grandTotal;
     }
 
 //    public void swapOrderItemProduct(long idOrderItem, long idOtherProduct) {

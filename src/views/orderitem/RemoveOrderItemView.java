@@ -1,6 +1,7 @@
 package views.orderitem;
 
 import models.OrderItem;
+import service.OrderItemService;
 import viewtemplate.OrderItemTemplate;
 
 public class RemoveOrderItemView extends OrderItemTemplate {
@@ -13,7 +14,7 @@ public class RemoveOrderItemView extends OrderItemTemplate {
         do {
             System.out.println("Please enter order item's ID to remove:");
             Long id = Long.parseLong(scanner.nextLine());
-            OrderItem temp = orderItemManagement.findIdOrderItem(id);
+            OrderItem temp = OrderItemService.findIdOrderItem(id);
 
             if (temp == null) {
                 System.out.println("The order item with id = " + id + " does not exist!");
@@ -24,7 +25,7 @@ public class RemoveOrderItemView extends OrderItemTemplate {
                 switch (confirm) {
                     case "Y":
                     case "y":
-                        orderItemManagement.removeOrderItem(id);
+                        OrderItemService.removeOrderItem(id);
                         break;
                     case "N":
                     case "n":

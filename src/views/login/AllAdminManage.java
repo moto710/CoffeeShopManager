@@ -26,7 +26,8 @@ public class AllAdminManage extends LoginTemplate {
                 case 4:
                     OrderItemView orderItemView = new OrderItemView();
                     break;
-                case 0: //exit
+                case 0:
+                    LoginView loginView = new LoginView();
                     break;
                 default:
                     break;
